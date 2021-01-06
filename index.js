@@ -1,6 +1,7 @@
 const express = require("express");
 const colors = require("colors");
 const morgan = require("morgan");
+const fileUpload = require("express-fileupload");
 
 // mongoDB connector
 const connectDB = require("./utils/connectDB");
@@ -20,10 +21,11 @@ connectDB();
 //middlewares
 app.use(morgan("dev")); // logging middleware
 app.use(express.json()); // body parsing middleware
+app.use(fileUpload());
 
 // mount routers
 app.use("/api/v1/", authRouter);
-app.use("/api/v1/blog/posts", postRouter);
+app.use("/api/v1/posts", postRouter);
 
 // custom error handler
 app.use(errorLogger);
