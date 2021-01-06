@@ -6,10 +6,14 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
   {
-    type: { type: String, required: true, enum: ["blog", "project"] },
-    title: { type: String, required: true },
+    type: {
+      type: String,
+      required: [true, "Please include a type of either blog or project"],
+      enum: ["blog", "project"],
+    },
+    title: { type: String, required: [true, "Please include a title"] },
     teaser: { type: String },
-    content: { type: String, required: true },
+    content: { type: String, required: [true, "Please include some content"] },
     photo: {
       type: String,
       default: "no-photo.jpg",

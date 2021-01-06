@@ -1,0 +1,47 @@
+[
+  {
+    "startDate": "Sep 2017",
+    "endDate": "Aug 2019",
+    "title": "Graduate Research Assistant",
+    "company": "UW Cardiovascular Fluid Dynamics Laboratory",
+    "description": "test",
+    "city": "Madison",
+    "state": "WI"
+  },
+  {
+    "startDate": "Sep 2019",
+    "endDate": "Mar 2021",
+    "title": "Sales Engineer",
+    "company": "Plastic Ingenuity",
+    "description": "test",
+    "city": "Madison",
+    "state": "WI"
+  },
+  {
+    "startDate": "May 2016",
+    "endDate": "Aug 2016",
+    "title": "Design Engineering Intern",
+    "company": "General Motors",
+    "description": "test",
+    "city": "Warren",
+    "state": "MI"
+  },
+  {
+    "startDate": "Feb 2015",
+    "endDate": "May 2017",
+    "title": "Student Success Center Senior Staff",
+    "company": "Western Michigan University",
+    "description": "test",
+    "city": "Kalamazoo",
+    "state": "MI"
+  },
+  {
+    "startDate": "Jan 2014",
+    "endDate": "Jan 2015",
+    "title": "Engineering Intern",
+    "company": "Humphrey Products",
+    "description": "test",
+    "city": "Kalamazoo",
+    "state": "MI"
+  }
+]

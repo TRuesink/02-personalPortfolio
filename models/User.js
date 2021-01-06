@@ -5,9 +5,14 @@ const Schema = mongoose.Schema;
 
 // define the user model
 const userSchema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, lowercase: true, unique: true },
-  password: { type: String, required: true },
+  name: { type: String, required: [true, "Please add your name"] },
+  email: {
+    type: String,
+    required: [true, "Please add your email"],
+    lowercase: true,
+    unique: true,
+  },
+  password: { type: String, required: [true, "Please add a password"] },
   role: { type: String, enum: ["basic"], default: "basic" },
   createdAt: { type: Date, default: Date.now },
 });

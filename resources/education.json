@@ -1,0 +1,20 @@
+[
+  {
+    "school": "Western Michigan University",
+    "degree": "B.S.",
+    "field": "Mechanical Engineering",
+    "honors": "summa cum laude",
+    "endDate": "Dec 2016",
+    "state": "MI",
+    "city": "Kalamazoo"
+  },
+  {
+    "school": "University of Wisconsin - Madison",
+    "degree": "M.S.",
+    "field": "Mechanical Engineering",
+    "gpa": 3.86,
+    "endDate": "May 2019",
+    "state": "MI",
+    "city": "Kalamazoo"
+  }
+]

@@ -15,6 +15,8 @@ const authRouter = require("./routes/authRouter");
 const postRouter = require("./routes/postRouter");
 const commentRouter = require("./routes/commentRouter");
 const tagRouter = require("./routes/tagRouter");
+const resumeRouter = require("./routes/resumeRouter");
+const messageRouter = require("./routes/messageRouter");
 
 // initialize our express app
 const app = express();
@@ -30,6 +32,8 @@ app.use("/api/v1/", authRouter);
 app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/comments", commentRouter);
 app.use("/api/v1/tags", tagRouter);
+app.use("/api/v1/resume", resumeRouter);
+app.use("/api/v1/messages", messageRouter);
 
 // custom error handler
 app.use(errorLogger);
