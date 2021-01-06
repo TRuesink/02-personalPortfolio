@@ -14,6 +14,7 @@ const errorLogger = require("./middlewares/errorLogger");
 const authRouter = require("./routes/authRouter");
 const postRouter = require("./routes/postRouter");
 const commentRouter = require("./routes/commentRouter");
+const tagRouter = require("./routes/tagRouter");
 
 // initialize our express app
 const app = express();
@@ -28,6 +29,7 @@ app.use(fileUpload());
 app.use("/api/v1/", authRouter);
 app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/comments", commentRouter);
+app.use("/api/v1/tags", tagRouter);
 
 // custom error handler
 app.use(errorLogger);

@@ -1,5 +1,6 @@
 const express = require("express");
 const commentRouter = require("./commentRouter");
+const tagRouter = require("./tagRouter");
 const {
   createPost,
   getPosts,
@@ -16,6 +17,7 @@ const router = express.Router();
 
 // reroute to comments and tags
 router.use("/:postId/comments", commentRouter);
+router.use("/:postId/tags", tagRouter);
 
 router
   .route("/")

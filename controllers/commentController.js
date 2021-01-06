@@ -45,7 +45,7 @@ exports.getComments = asyncHandler(async (req, res, next) => {
     );
   }
 
-  //create a new comment
+  //get list of comments
   const comments = await Comment.find({ post: req.params.postId })
     .populate({
       path: "post",

@@ -5,6 +5,11 @@ const Schema = mongoose.Schema;
 const tagSchema = new Schema({
   name: { type: String, required: true },
   post: { type: mongoose.Schema.ObjectId, ref: "Post", required: true },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const tagClass = mongoose.model("Tag", tagSchema);
