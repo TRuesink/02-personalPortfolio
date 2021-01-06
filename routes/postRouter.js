@@ -1,4 +1,5 @@
 const express = require("express");
+const commentRouter = require("./commentRouter");
 const {
   createPost,
   getPosts,
@@ -12,6 +13,9 @@ const advancedResults = require("../middlewares/advancedResults");
 const Post = require("../models/Post");
 
 const router = express.Router();
+
+// reroute to comments and tags
+router.use("/:postId/comments", commentRouter);
 
 router
   .route("/")

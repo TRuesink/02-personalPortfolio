@@ -13,6 +13,6 @@ router.route("/register").post(register);
 
 router.route("/login").post(requireSignIn, login);
 
-router.route("/user").get(protect, permissions("admin"), getUser);
+router.route("/user").get(protect, getUser);
 
 module.exports = router;

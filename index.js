@@ -13,6 +13,7 @@ const errorLogger = require("./middlewares/errorLogger");
 // bring in routes
 const authRouter = require("./routes/authRouter");
 const postRouter = require("./routes/postRouter");
+const commentRouter = require("./routes/commentRouter");
 
 // initialize our express app
 const app = express();
@@ -26,6 +27,7 @@ app.use(fileUpload());
 // mount routers
 app.use("/api/v1/", authRouter);
 app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/comments", commentRouter);
 
 // custom error handler
 app.use(errorLogger);
