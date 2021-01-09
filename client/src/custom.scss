@@ -12,6 +12,16 @@ $nav-pills-link-active-bg: $gray-800;
 
 $border-radius: 1rem;
 
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 100%;
+  background-color: $primary;
+  height: 1px;
+  margin-top: 0.2rem !important;
+}
+
 .custom-sidebar {
   z-index: 2;
   display: flex;
@@ -55,6 +65,7 @@ $border-radius: 1rem;
 .custom-nav-item {
   padding: 0.5rem 1rem !important;
   transition: 0.2s;
+  border-bottom: 3px solid $gray-800;
   &:hover {
     border-bottom: 3px solid $primary;
   }
@@ -69,10 +80,72 @@ $border-radius: 1rem;
 }
 
 .custom-section {
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resume-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 70vw;
+  .title {
+    font-weight: bold;
+    width: 8em;
+    text-align: center;
+    margin: 0.5em;
+    border-bottom: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+      to left,
+      $primary,
+      $secondary,
+      $primary
+    );
+  }
+  .content {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    img {
+      margin-bottom: 2rem;
+      width: 30vw;
+      max-width: 30vw;
+      max-height: 30vw;
+      height: auto;
+      border-radius: 4rem;
+    }
+    .description {
+      width: 35vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  .content-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .skills-section {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.custom-pill {
+  padding: 1.5em;
+  margin: 0.2em;
 }
 
 .banner {
+  height: 100vh;
   position: relative;
   .portfolio-image {
     position: absolute;
@@ -95,6 +168,39 @@ $border-radius: 1rem;
   }
 }
 
+.custom-card {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  img {
+    width: 20vh;
+    height: auto;
+    max-width: 20vh;
+    max-height: 20vh;
+    border-radius: 2rem;
+    margin-right: 1rem;
+  }
+
+  .info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .header {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .job-title {
+        color: $secondary;
+        font-weight: bold;
+      }
+      .company {
+        color: $gray-800;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .banner {
     background-color: rgba(255, 255, 255, 0.2);
@@ -107,12 +213,32 @@ $border-radius: 1rem;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 2rem;
-      width: 75vw;
+      width: 100%;
     }
   }
 
   .custom-sidebar {
     display: none;
+  }
+  .custom-card {
+    flex-direction: column;
+    align-items: center;
+    img {
+      width: 80%;
+      max-width: 80%;
+      max-height: 100%;
+    }
+    .info {
+      align-items: center;
+      .header {
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 1em;
+      }
+      p {
+        text-align: center;
+      }
+    }
   }
 }
 
@@ -130,6 +256,19 @@ $border-radius: 1rem;
   .custom-nav-item.active {
     border-left: 3px solid $primary;
     border-bottom: none;
+  }
+  .resume-section {
+    .content {
+      flex-direction: column;
+      img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .description {
+        width: 100%;
+      }
+    }
   }
 }
 

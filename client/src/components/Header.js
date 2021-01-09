@@ -7,7 +7,7 @@ class Header extends React.Component {
     return (
       <div>
         <Navbar variant="dark" expand="lg" fixed="top" bg="dark">
-          <NavLink to="/" className="navbar-brand">
+          <NavLink to="/" className="custom-nav-brand navbar-brand">
             timruesink.com
           </NavLink>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
