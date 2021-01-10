@@ -96,14 +96,7 @@ hr {
     width: 8em;
     text-align: center;
     margin: 0.5em;
-    border-bottom: 3px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(
-      to left,
-      $primary,
-      $secondary,
-      $primary
-    );
+    border-bottom: 3px solid $primary;
   }
   .content {
     margin-top: 2rem;
