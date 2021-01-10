@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const colors = require("colors");
 const morgan = require("morgan");
@@ -26,6 +27,9 @@ connectDB();
 app.use(morgan("dev")); // logging middleware
 app.use(express.json()); // body parsing middleware
 app.use(fileUpload());
+
+const dir = path.join(__dirname, "public");
+app.use(express.static(dir));
 
 // mount routers
 app.use("/api/v1/", authRouter);

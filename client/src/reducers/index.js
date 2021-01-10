@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
+import jobsReducer from "./jobsReducer";
+import skillsReducer from "./skillsReducer";
 
 export default combineReducers({
-  changeMe: () => {
-    return "changeMe";
-  },
+  skills: skillsReducer,
+  jobs: jobsReducer,
 });

@@ -1,41 +1,74 @@
 import React from "react";
+import { connect } from "react-redux";
+import { fetchSkills } from "../../actions";
 
 class Skills extends React.Component {
+  componentDidMount() {
+    this.props.fetchSkills();
+  }
+
+  renderSoftwareSkills() {
+    const softareSkills = this.props.skills.filter(
+      (skill) => skill.category === "Software Engineering"
+    );
+    return softareSkills.map((skill) => {
+      return <div className="custom-pill btn btn-primary">{skill.name}</div>;
+    });
+  }
+  renderSalesSkills() {
+    const salesSkills = this.props.skills.filter(
+      (skill) => skill.category === "Sales"
+    );
+    return salesSkills.map((skill) => {
+      return <div className="custom-pill btn btn-primary">{skill.name}</div>;
+    });
+  }
+
+  renderEngineeringSkills() {
+    const engineeringSkills = this.props.skills.filter(
+      (skill) => skill.category === "Mechanical Engineering"
+    );
+    return engineeringSkills.map((skill) => {
+      return <div className="custom-pill btn btn-primary">{skill.name}</div>;
+    });
+  }
+
   render() {
     return (
       <div style={{ backgroundColor: "#f8f9fa" }} className="custom-section">
         <div className="resume-section">
           <h1 className="title">SKILLS</h1>
-          <div className="content-column">
-            <h3>Software</h3>
-            <hr></hr>
-            <div className="skills-section">
-              <div className="custom-pill btn btn-primary">
-                Javascript <span class="badge badge-light">5/10</span>
+          {this.props.isFetching || this.props.skills.length === 0 ? (
+            <div class="ui active centered inline loader"></div>
+          ) : (
+            <div className="content-column">
+              <h3>Software</h3>
+              <hr></hr>
+              <div className="skills-section">
+                {this.renderSoftwareSkills()}
               </div>
-              <div className="custom-pill btn btn-primary">
-                Node / Express <span class="badge badge-light">7/10</span>
-              </div>
-              <div className="custom-pill btn btn-primary">
-                MongoDB / Mongoose <span class="badge badge-light">3/10</span>
-              </div>
-              <div className="custom-pill btn btn-primary">
-                JSForce / Salesforce Integration{" "}
-                <span class="badge badge-light">8/10</span>
-              </div>
-              <div className="custom-pill btn btn-primary">
-                HTML / CSS <span class="badge badge-light">10/10</span>
+              <h3>Sales</h3>
+              <hr></hr>
+              <div className="skills-section">{this.renderSalesSkills()}</div>
+              <h3>Mechanical Engineering</h3>
+              <hr></hr>
+              <div className="skills-section">
+                {this.renderEngineeringSkills()}
               </div>
             </div>
-            <h3>Sales</h3>
-            <hr></hr>
-            <h3>Mechanical Engineering</h3>
-            <hr></hr>
-          </div>
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default Skills;
+const mapStateToProps = (state) => {
+  return {
+    skills: Object.values(state.skills.data),
+    isFetching: state.skills.isFetching,
+    errorMesssage: state.skills.errorMesssage,
+  };
+};
+
+export default connect(mapStateToProps, { fetchSkills })(Skills);

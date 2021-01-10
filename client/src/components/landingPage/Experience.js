@@ -1,13 +1,19 @@
 import React from "react";
 import piLogo from "../../static/images/piLogo.jpg";
+import { connect } from "react-redux";
+import { fetchJobs } from "../../actions";
 
 class Experience extends React.Component {
+  componentDidMount() {
+    this.props.fetchJobs();
+  }
   render() {
     return (
       <div className="custom-section">
         <div className="resume-section">
           <h1 className="title">EXPERIENCE</h1>
           <div className="content-column">
+            <img src="/no_photo.jpg"></img>
             <div className="custom-card">
               <img src={piLogo}></img>
               <div className="info">
@@ -48,4 +54,4 @@ class Experience extends React.Component {
   }
 }
 
-export default Experience;
+export default connect(null, { fetchJobs })(Experience);

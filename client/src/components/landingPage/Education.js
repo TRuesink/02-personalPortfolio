@@ -1,5 +1,6 @@
 import React from "react";
-import piLogo from "../../static/images/piLogo.jpg";
+import wiLogo from "../../static/images/wiLogo.jpg";
+import wmuLogo from "../../static/images/wmuLogo.jpg";
 
 class Education extends React.Component {
   render() {
@@ -9,11 +10,11 @@ class Education extends React.Component {
           <h1 className="title">EDUCATION</h1>
           <div className="content-column">
             <div className="custom-card">
-              <img src={piLogo}></img>
+              <img src={wiLogo}></img>
               <div className="info">
                 <div className="header">
-                  <h4 className="job-title">Sales Engineer</h4>
-                  <h4 className="company">Plastic Ingenuity</h4>
+                  <h4 className="job-title">M.S. Mechanical Engineering</h4>
+                  <h4 className="company">University of Wisconsin - Madison</h4>
                 </div>
                 <p className="font-italic">Sep 2019 - March 2021</p>
                 <p>
@@ -26,11 +27,11 @@ class Education extends React.Component {
             </div>
             <hr></hr>
             <div className="custom-card">
-              <img src={piLogo}></img>
+              <img src={wmuLogo}></img>
               <div className="info">
                 <div className="header">
-                  <h4 className="job-title">Sales Engineer</h4>
-                  <h4 className="company">Plastic Ingenuity</h4>
+                  <h4 className="job-title">B.S. Mechanical Engineering</h4>
+                  <h4 className="company">Western Michigan University</h4>
                 </div>
                 <p className="font-italic">Sep 2019 - March 2021</p>
                 <p>

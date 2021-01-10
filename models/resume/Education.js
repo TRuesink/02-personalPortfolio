@@ -9,6 +9,7 @@ const educationSchema = new Schema({
   gpa: { type: Number, required: false },
   honors: { type: String, required: false },
   endDate: { type: Date, required: true },
+  photo: { type: String, default: "no_photo.jpg" },
   city: { type: String, required: true },
   state: { type: String, required: true },
 });

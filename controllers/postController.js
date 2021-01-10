@@ -100,7 +100,7 @@ exports.deletePost = asyncHandler(async (req, res, next) => {
 });
 
 // @desc Upload a post photo
-// @route DELETE /api/v1/posts/:id/photo
+// @route POST /api/v1/posts/:id/photo
 // @access Private
 exports.uploadPostPhoto = asyncHandler(async (req, res, next) => {
   const post = await Post.findById(req.params.id);

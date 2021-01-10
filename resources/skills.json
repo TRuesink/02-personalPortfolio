@@ -1,38 +1,72 @@
 [
   {
     "name": "Javascript",
-    "level": 5
+    "level": 5,
+    "category": "Software Engineering"
   },
   {
     "name": "CSS",
-    "level": 5
+    "level": 5,
+    "category": "Software Engineering"
   },
   {
     "name": "HTML",
-    "level": 5
+    "level": 5,
+    "category": "Software Engineering"
   },
   {
     "name": "nodeJS / Express",
-    "level": 5
+    "level": 5,
+    "category": "Software Engineering"
   },
   {
     "name": "Mongoose / MongoDB",
-    "level": 5
+    "level": 5,
+    "category": "Software Engineering"
   },
   {
     "name": "React / Redux",
-    "level": 5
+    "level": 5,
+    "category": "Software Engineering"
   },
   {
     "name": "jsForce / salesforce REST API",
-    "level": 5
+    "level": 5,
+    "category": "Software Engineering"
   },
   {
     "name": "salesforce point-and-click development",
-    "level": 5
+    "level": 5,
+    "category": "Software Engineering"
   },
   {
-    "name": "sales",
-    "level": 5
+    "name": "negotiation",
+    "level": 5,
+    "category": "Sales"
+  },
+  {
+    "name": "project management",
+    "level": 5,
+    "category": "Sales"
+  },
+  {
+    "name": "marketing",
+    "level": 5,
+    "category": "Sales"
+  },
+  {
+    "name": "solid works",
+    "level": 5,
+    "category": "Mechanical Engineering"
+  },
+  {
+    "name": "Matlab",
+    "level": 5,
+    "category": "Mechanical Engineering"
+  },
+  {
+    "name": "Problem Solving",
+    "level": 5,
+    "category": "Mechanical Engineering"
   }
 ]
