@@ -3,55 +3,71 @@ import piLogo from "../../static/images/piLogo.jpg";
 import { connect } from "react-redux";
 import { fetchJobs } from "../../actions";
 
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 class Experience extends React.Component {
   componentDidMount() {
     this.props.fetchJobs();
+  }
+
+  renderJobs() {
+    console.log(this.props);
+    return this.props.jobs.map((job) => {
+      const startDate = new Date(job.startDate);
+      const endDate = new Date(job.endDate);
+      return (
+        <div className="custom-card">
+          <img src={`/api/v1/photos/static/${job.photo}`}></img>
+          <div className="info">
+            <div className="header">
+              <h4 className="job-title">{job.title}</h4>
+              <h4 className="company">{job.company}</h4>
+            </div>
+            <p className="font-italic">
+              {`${months[startDate.getMonth()]} ${startDate.getFullYear()}`} -{" "}
+              {`${months[endDate.getMonth()]} ${endDate.getFullYear()}`}
+            </p>
+            <p>{job.description}</p>
+          </div>
+        </div>
+      );
+    });
   }
   render() {
     return (
       <div className="custom-section">
         <div className="resume-section">
           <h1 className="title">EXPERIENCE</h1>
-          <div className="content-column">
-            <img src="/no_photo.jpg"></img>
-            <div className="custom-card">
-              <img src={piLogo}></img>
-              <div className="info">
-                <div className="header">
-                  <h4 className="job-title">Sales Engineer</h4>
-                  <h4 className="company">Plastic Ingenuity</h4>
-                </div>
-                <p className="font-italic">Sep 2019 - March 2021</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  mi eros, dignissim non felis in, tincidunt auctor lorem. Sed
-                  vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id
-                  mi convallis, vel viverra dui maximus.
-                </p>
-              </div>
-            </div>
-            <hr></hr>
-            <div className="custom-card">
-              <img src={piLogo}></img>
-              <div className="info">
-                <div className="header">
-                  <h4 className="job-title">Sales Engineer</h4>
-                  <h4 className="company">Plastic Ingenuity</h4>
-                </div>
-                <p className="font-italic">Sep 2019 - March 2021</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  mi eros, dignissim non felis in, tincidunt auctor lorem. Sed
-                  vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id
-                  mi convallis, vel viverra dui maximus.
-                </p>
-              </div>
-            </div>
-          </div>
+          {this.props.isFetching || this.props.jobs.length === 0 ? (
+            <div class="ui active centered inline loader"></div>
+          ) : (
+            <div className="content-column">{this.renderJobs()}</div>
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default connect(null, { fetchJobs })(Experience);
+const mapStateToProps = (state) => {
+  return {
+    jobs: Object.values(state.jobs.data),
+    isFetching: state.jobs.isFetching,
+    errorMessage: state.jobs.errorMessage,
+  };
+};
+
+export default connect(mapStateToProps, { fetchJobs })(Experience);

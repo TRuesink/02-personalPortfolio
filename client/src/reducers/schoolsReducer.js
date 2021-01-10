@@ -1,5 +1,9 @@
 import _ from "lodash";
-import { FETCH_JOBS, IS_FETCHING_JOBS, ERROR_JOBS } from "../actions/types";
+import {
+  FETCH_EDUCATION,
+  IS_FETCHING_EDUCATION,
+  ERROR_EDUCATION,
+} from "../actions/types";
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -7,21 +11,21 @@ const INITIAL_STATE = {
   errorMessage: "",
 };
 
-const jobsReducer = (state = INITIAL_STATE, action) => {
+const schoolsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_JOBS:
+    case FETCH_EDUCATION:
       return {
         isFetching: false,
         data: { ...state.data, ..._.mapKeys(action.payload, "_id") },
         errorMessage: "",
       };
-    case IS_FETCHING_JOBS:
+    case IS_FETCHING_EDUCATION:
       return {
         isFetching: true,
         data: { ...state.data },
         errorMessage: "",
       };
-    case ERROR_JOBS:
+    case ERROR_EDUCATION:
       return {
         isFetching: false,
         data: {},
@@ -32,4 +36,4 @@ const jobsReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default jobsReducer;
+export default schoolsReducer;

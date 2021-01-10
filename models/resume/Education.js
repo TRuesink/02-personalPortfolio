@@ -8,6 +8,7 @@ const educationSchema = new Schema({
   field: { type: String, required: true },
   gpa: { type: Number, required: false },
   honors: { type: String, required: false },
+  startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   photo: { type: String, default: "no_photo.jpg" },
   city: { type: String, required: true },

@@ -2,51 +2,79 @@ import React from "react";
 import wiLogo from "../../static/images/wiLogo.jpg";
 import wmuLogo from "../../static/images/wmuLogo.jpg";
 
+import { connect } from "react-redux";
+import { fetchEducation } from "../../actions";
+
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 class Education extends React.Component {
+  componentDidMount() {
+    this.props.fetchEducation();
+  }
+
+  renderSchools() {
+    return this.props.schools.map((school) => {
+      const startDate = new Date(school.startDate);
+      const endDate = new Date(school.endDate);
+      return (
+        <div className="custom-card">
+          <img src={`/api/v1/photos/static/${school.photo}`}></img>
+          <div className="info">
+            <div className="header">
+              <h4 className="job-title">
+                {school.degree + " " + school.field}
+              </h4>
+              <h4 className="company">{school.school}</h4>
+            </div>
+            <p className="font-italic">
+              {`${months[startDate.getMonth()]} ${startDate.getFullYear()}`} -{" "}
+              {`${months[endDate.getMonth()]} ${endDate.getFullYear()}`}
+            </p>
+            {!school.honors ? (
+              <p>GPA: {school.gpa}</p>
+            ) : (
+              <p>Honors: {school.honors}</p>
+            )}
+          </div>
+        </div>
+      );
+    });
+  }
   render() {
     return (
       <div style={{ backgroundColor: "#f8f9fa" }} className="custom-section">
         <div className="resume-section">
           <h1 className="title">EDUCATION</h1>
-          <div className="content-column">
-            <div className="custom-card">
-              <img src={wiLogo}></img>
-              <div className="info">
-                <div className="header">
-                  <h4 className="job-title">M.S. Mechanical Engineering</h4>
-                  <h4 className="company">University of Wisconsin - Madison</h4>
-                </div>
-                <p className="font-italic">Sep 2019 - March 2021</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  mi eros, dignissim non felis in, tincidunt auctor lorem. Sed
-                  vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id
-                  mi convallis, vel viverra dui maximus.
-                </p>
-              </div>
-            </div>
-            <hr></hr>
-            <div className="custom-card">
-              <img src={wmuLogo}></img>
-              <div className="info">
-                <div className="header">
-                  <h4 className="job-title">B.S. Mechanical Engineering</h4>
-                  <h4 className="company">Western Michigan University</h4>
-                </div>
-                <p className="font-italic">Sep 2019 - March 2021</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  mi eros, dignissim non felis in, tincidunt auctor lorem. Sed
-                  vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id
-                  mi convallis, vel viverra dui maximus.
-                </p>
-              </div>
-            </div>
-          </div>
+          {this.props.isFetching || this.props.schools.length === 0 ? (
+            <div class="ui active centered inline loader"></div>
+          ) : (
+            <div className="content-column">{this.renderSchools()}</div>
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default Education;
+const mapStateToProps = (state) => {
+  return {
+    schools: Object.values(state.schools.data),
+    isFetching: state.schools.isFetching,
+    errorMessage: state.schools.errorMessage,
+  };
+};
+
+export default connect(mapStateToProps, { fetchEducation })(Education);

@@ -29,7 +29,7 @@ app.use(express.json()); // body parsing middleware
 app.use(fileUpload());
 
 const dir = path.join(__dirname, "public");
-app.use(express.static(dir));
+app.use("/api/v1/photos", express.static(dir));
 
 // mount routers
 app.use("/api/v1/", authRouter);

@@ -23,6 +23,7 @@ const education = JSON.parse(
   fs.readFileSync(`${__dirname}/resources/education.json`, "utf-8")
 );
 education.forEach((ed) => {
+  ed.startDate = new Date(ed.startDate);
   ed.endDate = new Date(ed.endDate);
 });
 

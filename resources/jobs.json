@@ -5,7 +5,7 @@
     "photo": "wiLogo.jpg",
     "title": "Graduate Research Assistant",
     "company": "UW Cardiovascular Fluid Dynamics Laboratory",
-    "description": "test",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
     "city": "Madison",
     "state": "WI"
   },
@@ -15,34 +15,37 @@
     "photo": "piLogo.jpg",
     "title": "Sales Engineer",
     "company": "Plastic Ingenuity",
-    "description": "test",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
     "city": "Madison",
     "state": "WI"
   },
   {
+    "photo": "gmLogo.jpg",
     "startDate": "May 2016",
     "endDate": "Aug 2016",
     "title": "Design Engineering Intern",
     "company": "General Motors",
-    "description": "test",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
     "city": "Warren",
     "state": "MI"
   },
   {
+    "photo": "wmuLogo.jpg",
     "startDate": "Feb 2015",
     "endDate": "May 2017",
     "title": "Student Success Center Senior Staff",
     "company": "Western Michigan University",
-    "description": "test",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
     "city": "Kalamazoo",
     "state": "MI"
   },
   {
+    "photo": "hpLogo.jpg",
     "startDate": "Jan 2014",
     "endDate": "Jan 2015",
     "title": "Engineering Intern",
     "company": "Humphrey Products",
-    "description": "test",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
     "city": "Kalamazoo",
     "state": "MI"
   }

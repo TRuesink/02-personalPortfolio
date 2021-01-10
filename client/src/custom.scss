@@ -166,6 +166,7 @@ hr {
   margin-bottom: 0.8rem;
   display: flex;
   flex-direction: row;
+  align-items: center;
   img {
     width: 20vh;
     height: auto;
@@ -190,6 +191,7 @@ hr {
       }
       .company {
         color: $gray-800;
+        text-align: right;
       }
     }
   }
@@ -218,6 +220,7 @@ hr {
     flex-direction: column;
     align-items: center;
     img {
+      margin-right: 0px;
       width: 80%;
       max-width: 80%;
       max-height: 100%;
@@ -228,6 +231,12 @@ hr {
         align-items: center;
         flex-direction: column;
         margin-bottom: 1em;
+        .job-title {
+          text-align: center;
+        }
+        .company {
+          text-align: center;
+        }
       }
       p {
         text-align: center;
