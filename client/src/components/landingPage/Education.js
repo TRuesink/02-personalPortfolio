@@ -26,32 +26,36 @@ class Education extends React.Component {
   }
 
   renderSchools() {
-    return this.props.schools.map((school) => {
-      const startDate = new Date(school.startDate);
-      const endDate = new Date(school.endDate);
-      return (
-        <div className="custom-card">
-          <img src={`/api/v1/photos/static/${school.photo}`}></img>
-          <div className="info">
-            <div className="header">
-              <h4 className="job-title">
-                {school.degree + " " + school.field}
-              </h4>
-              <h4 className="company">{school.school}</h4>
+    return this.props.schools
+      .sort((a, b) => {
+        return new Date(b.endDate) - new Date(a.endDate);
+      })
+      .map((school) => {
+        const startDate = new Date(school.startDate);
+        const endDate = new Date(school.endDate);
+        return (
+          <div className="custom-card">
+            <img src={`/api/v1/photos/static/${school.photo}`}></img>
+            <div className="info">
+              <div className="header">
+                <h4 className="job-title">
+                  {school.degree + " " + school.field}
+                </h4>
+                <h4 className="company">{school.school}</h4>
+              </div>
+              <p className="font-italic">
+                {`${months[startDate.getMonth()]} ${startDate.getFullYear()}`} -{" "}
+                {`${months[endDate.getMonth()]} ${endDate.getFullYear()}`}
+              </p>
+              {!school.honors ? (
+                <p>GPA: {school.gpa}</p>
+              ) : (
+                <p>Honors: {school.honors}</p>
+              )}
             </div>
-            <p className="font-italic">
-              {`${months[startDate.getMonth()]} ${startDate.getFullYear()}`} -{" "}
-              {`${months[endDate.getMonth()]} ${endDate.getFullYear()}`}
-            </p>
-            {!school.honors ? (
-              <p>GPA: {school.gpa}</p>
-            ) : (
-              <p>Honors: {school.honors}</p>
-            )}
           </div>
-        </div>
-      );
-    });
+        );
+      });
   }
   render() {
     return (

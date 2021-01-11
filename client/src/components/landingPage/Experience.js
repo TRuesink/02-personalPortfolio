@@ -25,26 +25,30 @@ class Experience extends React.Component {
 
   renderJobs() {
     console.log(this.props);
-    return this.props.jobs.map((job) => {
-      const startDate = new Date(job.startDate);
-      const endDate = new Date(job.endDate);
-      return (
-        <div className="custom-card">
-          <img src={`/api/v1/photos/static/${job.photo}`}></img>
-          <div className="info">
-            <div className="header">
-              <h4 className="job-title">{job.title}</h4>
-              <h4 className="company">{job.company}</h4>
+    return this.props.jobs
+      .sort((a, b) => {
+        return new Date(b.endDate) - new Date(a.endDate);
+      })
+      .map((job) => {
+        const startDate = new Date(job.startDate);
+        const endDate = new Date(job.endDate);
+        return (
+          <div className="custom-card">
+            <img src={`/api/v1/photos/static/${job.photo}`}></img>
+            <div className="info">
+              <div className="header">
+                <h4 className="job-title">{job.title}</h4>
+                <h4 className="company">{job.company}</h4>
+              </div>
+              <p className="font-italic">
+                {`${months[startDate.getMonth()]} ${startDate.getFullYear()}`} -{" "}
+                {`${months[endDate.getMonth()]} ${endDate.getFullYear()}`}
+              </p>
+              <p>{job.description}</p>
             </div>
-            <p className="font-italic">
-              {`${months[startDate.getMonth()]} ${startDate.getFullYear()}`} -{" "}
-              {`${months[endDate.getMonth()]} ${endDate.getFullYear()}`}
-            </p>
-            <p>{job.description}</p>
           </div>
-        </div>
-      );
-    });
+        );
+      });
   }
   render() {
     return (
