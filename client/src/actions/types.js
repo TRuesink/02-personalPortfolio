@@ -12,3 +12,12 @@ export const ERROR_JOBS = "ERROR_JOBS";
 export const FETCH_EDUCATION = "FETCH_EDUCATION";
 export const IS_FETCHING_EDUCATION = "IS_FETCHING_EDUCATION";
 export const ERROR_EDUCATION = "ERROR_EDUCATION";
+
+// post resource
+export const FETCH_POSTS = "FETCH_POSTS";
+export const FETCH_POST = "FETCH_POST";
+export const UPDATE_POST = "UPDATE_POST";
+export const CREATE_POST = "CREATE_POST";
+export const DELETE_POST = "DELETE_POST";
+export const IS_FETCHING_POSTS = "IS_FETCHING_POSTS";
+export const ERROR_POSTS = "ERROR_POSTS";

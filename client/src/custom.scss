@@ -84,6 +84,20 @@ hr {
   flex-direction: column;
   align-items: center;
 }
+.footer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    color: $secondary;
+    font-weight: bold;
+  }
+  p {
+    text-align: center;
+  }
+}
 
 .resume-section {
   display: flex;
@@ -91,6 +105,8 @@ hr {
   align-items: center;
   justify-content: flex-start;
   width: 70vw;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   .title {
     font-weight: bold;
     width: 8em;
@@ -130,6 +146,10 @@ hr {
       flex-wrap: wrap;
       margin-bottom: 1rem;
     }
+  }
+  .portfolio-content {
+    width: 100%;
+    height: 150vh;
   }
 }
 
@@ -197,7 +217,45 @@ hr {
   }
 }
 
-@media only screen and (max-width: 600px) {
+.image-card {
+  img {
+    transition: 0.2s;
+  }
+  &:hover {
+    img {
+      filter: blur(8px);
+      -webkit-filter: blur(8px);
+    }
+    .custom-card-text {
+      background-color: rgba(0, 0, 0, 0.4);
+      .description {
+        color: rgba(255, 255, 255, 1);
+      }
+      .date {
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+  .custom-card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+    .description {
+      color: rgba(255, 255, 255, 0);
+      transition: 0.2s;
+    }
+    .date {
+      align-self: flex-end;
+      color: rgba(255, 255, 255, 0);
+      transition: 0.2s;
+    }
+  }
+}
+
+@media only screen and (max-width: 753px) {
   .banner {
     background-color: rgba(255, 255, 255, 0.2);
     .portfolio-image {
@@ -211,6 +269,10 @@ hr {
       padding: 2rem;
       width: 100%;
     }
+  }
+
+  .resume-section {
+    width: 85vw;
   }
 
   .custom-sidebar {
@@ -251,11 +313,14 @@ hr {
     width: 5rem;
     padding-left: 0.5rem !important;
     margin: 0 0 0.5rem 0;
+    border-left: 3px solid $gray-800;
+    border-bottom: none;
     &:hover {
       border-left: 3px solid $primary;
       border-bottom: none;
     }
   }
+
   .custom-nav-item.active {
     border-left: 3px solid $primary;
     border-bottom: none;

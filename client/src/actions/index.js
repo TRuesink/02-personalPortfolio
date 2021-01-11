@@ -10,6 +10,9 @@ import {
   FETCH_EDUCATION,
   IS_FETCHING_EDUCATION,
   ERROR_EDUCATION,
+  FETCH_POSTS,
+  IS_FETCHING_POSTS,
+  ERROR_POSTS,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -36,7 +39,7 @@ export const fetchJobs = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: IS_FETCHING_JOBS });
-      const jobs = await axios.get("/api/v1/resume/jobs");
+      const jobs = await axios.get("/api/v1/resume/jobs?sort=-endDate");
       dispatch({ type: FETCH_JOBS, payload: jobs.data.data });
     } catch (error) {
       if (!error.response.message) {
@@ -52,7 +55,9 @@ export const fetchEducation = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: IS_FETCHING_EDUCATION });
-      const education = await axios.get("/api/v1/resume/education");
+      const education = await axios.get(
+        "/api/v1/resume/education?sort=-endDate"
+      );
       dispatch({ type: FETCH_EDUCATION, payload: education.data.data });
     } catch (error) {
       if (!error.response.message) {
@@ -62,6 +67,26 @@ export const fetchEducation = () => {
         });
       }
       dispatch({ type: ERROR_EDUCATION, payload: error.response.message });
+    }
+  };
+};
+
+// --------------------- POST RESOURCES ---------------------- //
+// get list of Posts
+export const fetchPosts = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_POSTS });
+      const posts = await axios.get("/api/v1/posts");
+      dispatch({ type: FETCH_POSTS, payload: posts.data.data });
+    } catch (error) {
+      if (!error.response.message) {
+        return dispatch({
+          type: ERROR_POSTS,
+          payload: error.response.data,
+        });
+      }
+      dispatch({ type: ERROR_POSTS, payload: error.response.message });
     }
   };
 };
