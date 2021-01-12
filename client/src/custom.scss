@@ -135,6 +135,15 @@ hr {
       flex-direction: column;
       align-items: flex-start;
     }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+    }
+    .contact-form {
+      width: 70%;
+    }
   }
   .content-column {
     width: 100%;
@@ -223,8 +232,8 @@ hr {
   }
   &:hover {
     img {
-      filter: blur(8px);
-      -webkit-filter: blur(8px);
+      -webkit-filter: blur(4px);
+      filter: blur(4px);
     }
     .custom-card-text {
       background-color: rgba(0, 0, 0, 0.4);
@@ -334,6 +343,16 @@ hr {
         max-height: 100%;
       }
       .description {
+        width: 100%;
+      }
+      .contact-info {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+        justify-content: space-around;
+      }
+      .contact-form {
         width: 100%;
       }
     }

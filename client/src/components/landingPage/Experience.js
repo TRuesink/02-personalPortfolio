@@ -24,7 +24,6 @@ class Experience extends React.Component {
   }
 
   renderJobs() {
-    console.log(this.props);
     return this.props.jobs
       .sort((a, b) => {
         return new Date(b.endDate) - new Date(a.endDate);

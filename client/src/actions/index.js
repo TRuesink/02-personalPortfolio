@@ -1,4 +1,5 @@
 import axios from "axios";
+import { reset } from "redux-form";
 import _ from "lodash";
 import {
   FETCH_SKILLS,
@@ -13,6 +14,9 @@ import {
   FETCH_POSTS,
   IS_FETCHING_POSTS,
   ERROR_POSTS,
+  IS_FETCHING_MESSAGES,
+  CREATE_MESSAGE,
+  ERROR_MESSAGES,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -85,6 +89,27 @@ export const fetchPosts = () => {
         });
       }
       dispatch({ type: ERROR_POSTS, payload: error.response.message });
+    }
+  };
+};
+
+// --------------------- MESSAGE RESOURCES ---------------------- //
+// create Message
+export const createMessage = (formValues) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_MESSAGES });
+      const message = await axios.post("/api/v1/messages", formValues);
+      dispatch({ type: CREATE_MESSAGE, payload: message.data });
+      dispatch(reset("contactForm"));
+    } catch (error) {
+      if (!error.response.message) {
+        return dispatch({
+          type: ERROR_MESSAGES,
+          payload: error.response.data,
+        });
+      }
+      dispatch({ type: ERROR_MESSAGES, payload: error.response.message });
     }
   };
 };

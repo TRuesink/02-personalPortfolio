@@ -21,3 +21,8 @@ export const CREATE_POST = "CREATE_POST";
 export const DELETE_POST = "DELETE_POST";
 export const IS_FETCHING_POSTS = "IS_FETCHING_POSTS";
 export const ERROR_POSTS = "ERROR_POSTS";
+
+// message resource
+export const CREATE_MESSAGE = "CREATE_MESSAGE";
+export const IS_FETCHING_MESSAGES = "IS_FETCHING_MESSAGES";
+export const ERROR_MESSAGES = "ERROR_MESSAGES";
