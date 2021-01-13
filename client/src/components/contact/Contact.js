@@ -29,7 +29,7 @@ class Contact extends React.Component {
                 <h5 className="text-primary">(608) 327-9816</h5>
               </div>
             </div>
-            <div className="contact-form">
+            <div className="contact-form-container">
               <ContactForm onSubmit={this.onSubmit} />
             </div>
           </div>

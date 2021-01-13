@@ -1,5 +1,4 @@
 import React from "react";
-
 import Banner from "./Banner";
 import About from "./About";
 import Skills from "./Skills";
@@ -9,7 +8,7 @@ import Portfolio from "./Portfolio";
 import Contact from "../contact/Contact";
 import Sidebar from "../Sidebar";
 
-import { Element, Link as ScrollLink } from "react-scroll";
+import { Element } from "react-scroll";
 
 const sections = [
   { name: "About", icon: "user" },
@@ -25,7 +24,6 @@ class LandingPage extends React.Component {
     return (
       <div>
         <Sidebar sections={sections} />
-
         <Element name="About" className="element">
           <Banner />
           <About />
@@ -49,5 +47,4 @@ class LandingPage extends React.Component {
     );
   }
 }
-
 export default LandingPage;

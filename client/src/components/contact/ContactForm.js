@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import { showAlert } from "../../actions";
 
 const emailRegExp = new RegExp(
   /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
@@ -12,7 +14,7 @@ class ContactForm extends React.Component {
     }`;
     return (
       <>
-        <label for={label}>{label}</label>
+        <label>{label}</label>
         <input
           {...input}
           type={label}
@@ -33,7 +35,7 @@ class ContactForm extends React.Component {
     }`;
     return (
       <>
-        <label for={label}>{label}</label>
+        <label>{label}</label>
         <textarea
           {...input}
           rows="6"
@@ -50,34 +52,51 @@ class ContactForm extends React.Component {
 
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
+    this.props.showAlert({
+      type: "success",
+      content: "Thanks for contacting me!",
+    });
   };
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <div className="form-row">
-          <div className="form-group col-md-6">
-            <Field name="email" component={this.renderInput} label="Email" />
+      <div className="is-loading">
+        {this.props.isFetching ? (
+          <>
+            <div className="is-loading-spinner">
+              <div className="ui active centered inline loader"></div>
+            </div>
+            <div className="is-loading-background"></div>
+          </>
+        ) : null}
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <Field name="email" component={this.renderInput} label="Email" />
+            </div>
+            <div className="form-group col-md-6">
+              <Field name="name" component={this.renderInput} label="Name" />
+            </div>
           </div>
-          <div className="form-group col-md-6">
-            <Field name="name" component={this.renderInput} label="Name" />
+          <div className="form-group">
+            <Field
+              name="subject"
+              component={this.renderInput}
+              label="Subject"
+            />
           </div>
-        </div>
-        <div className="form-group">
-          <Field name="subject" component={this.renderInput} label="Subject" />
-        </div>
-        <div className="form-group">
-          <Field
-            name="message"
-            component={this.renderTextArea}
-            label="Message"
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Sign in
-        </button>
-      </form>
+          <div className="form-group">
+            <Field
+              name="message"
+              component={this.renderTextArea}
+              label="Message"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Sign in
+          </button>
+        </form>
+      </div>
     );
   }
 }
@@ -104,7 +123,15 @@ const validate = (formValues) => {
   return errors;
 };
 
-export default reduxForm({
+ContactForm = reduxForm({
   form: "contactForm",
   validate: validate,
 })(ContactForm);
+
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.messages.isFetching,
+  };
+};
+
+export default connect(mapStateToProps, { showAlert })(ContactForm);

@@ -14,6 +14,7 @@ const postSchema = new Schema(
     title: { type: String, required: [true, "Please include a title"] },
     teaser: { type: String },
     content: { type: String, required: [true, "Please include some content"] },
+    featured: { type: Boolean, default: false },
     photo: {
       type: String,
       default: "no-photo.jpg",

@@ -10,13 +10,32 @@ import AdminPage from "./admin/AdminPage";
 import BlogPage from "./blog/BlogPage";
 import ProjectPage from "./projects/ProjectPage";
 
+import { connect } from "react-redux";
+import { dismissAlert } from "../actions";
+import { Alert } from "react-bootstrap";
+
 class App extends React.Component {
+  renderAlert() {
+    if (this.props.alert.active) {
+      return (
+        <Alert
+          variant={this.props.alert.message.type}
+          onClose={() => this.props.dismissAlert()}
+          dismissible
+        >
+          <Alert.Heading>{this.props.alert.message.type}</Alert.Heading>
+          <p>{this.props.alert.message.content}</p>
+        </Alert>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="body-bg">
+        <div className="custom-alert">{this.renderAlert()}</div>
         <Router history={history}>
           <Header />
-
           <div>
             <Switch>
               <Route path="/" exact component={LandingPage} />
@@ -32,4 +51,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    alert: state.alert,
+  };
+};
+
+export default connect(mapStateToProps, { dismissAlert })(App);

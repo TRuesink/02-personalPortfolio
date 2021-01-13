@@ -1,5 +1,6 @@
 import axios from "axios";
 import { reset } from "redux-form";
+import history from "../history";
 import _ from "lodash";
 import {
   FETCH_SKILLS,
@@ -17,6 +18,8 @@ import {
   IS_FETCHING_MESSAGES,
   CREATE_MESSAGE,
   ERROR_MESSAGES,
+  SHOW_ALERT,
+  DISMISS_ALERT,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -102,6 +105,7 @@ export const createMessage = (formValues) => {
       const message = await axios.post("/api/v1/messages", formValues);
       dispatch({ type: CREATE_MESSAGE, payload: message.data });
       dispatch(reset("contactForm"));
+      history.push("/");
     } catch (error) {
       if (!error.response.message) {
         return dispatch({
@@ -112,4 +116,15 @@ export const createMessage = (formValues) => {
       dispatch({ type: ERROR_MESSAGES, payload: error.response.message });
     }
   };
+};
+
+// --------------------- ALERT ACTION CREATORS ---------------------- //
+// show alert
+export const showAlert = (message) => {
+  return { type: SHOW_ALERT, payload: message };
+};
+
+// dismess alert
+export const dismissAlert = () => {
+  return { type: DISMISS_ALERT };
 };
