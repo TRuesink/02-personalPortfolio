@@ -19,10 +19,10 @@ exports.requireSignIn = (req, res, next) => {
 exports.protect = (req, res, next) => {
   passport.authenticate("jwt", function (err, user, info) {
     if (err) {
-      return next(new ErrorResponse("Not Authorized", 401));
+      return next(new ErrorResponse(info.message, 401));
     }
     if (!user) {
-      return next(new ErrorResponse("Not Authorized", 401));
+      return next(new ErrorResponse(info.message, 401));
     }
     req.user = user;
     return next();

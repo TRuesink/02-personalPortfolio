@@ -7,6 +7,7 @@ import { reducer as formReducer } from "redux-form";
 import messageReducer from "./messageReducer";
 import alertReducer from "./alertReducer";
 import userReducer from "./userReducer";
+import authReducer from "./authReducer";
 
 export default combineReducers({
   skills: skillsReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   messages: messageReducer,
   alert: alertReducer,
   users: userReducer,
+  auth: authReducer,
   form: formReducer,
 });

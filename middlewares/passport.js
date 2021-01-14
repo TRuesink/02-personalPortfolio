@@ -34,9 +34,19 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
   });
 });
 
+// custom cookie extactor function - we are getting the jwt from the cookie
+const cookieExtractor = function (req) {
+  let token = null;
+  if (req && req.session.token) {
+    token = req.session.token;
+  }
+  console.log(token);
+  return token;
+};
+
 //set up option for jwt strategy
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: cookieExtractor,
   secretOrKey: keys.jwtSecret,
 };
 
@@ -45,6 +55,7 @@ const jwtLogin = new JwtStrategy(jwtOptions, function (payload, done) {
   // see if the user ID in the payload exists in our data base
   // if it does, call done with that user
   // otherwise, call done without user object
+
   User.findById(payload.sub, function (err, user) {
     if (err) {
       return done(err, false, { message: "Not Authorized" });
@@ -52,7 +63,7 @@ const jwtLogin = new JwtStrategy(jwtOptions, function (payload, done) {
     if (user) {
       done(null, user);
     } else {
-      done(null, false, { message: "Not Authorized" });
+      done(null, false);
     }
   });
 });

@@ -3,9 +3,13 @@ const express = require("express");
 const colors = require("colors");
 const morgan = require("morgan");
 const fileUpload = require("express-fileupload");
+const cookieSession = require("cookie-session");
 
 // mongoDB connector
 const connectDB = require("./utils/connectDB");
+
+// keys
+const keys = require("./config/keys");
 
 // custom error handler
 const errorHandler = require("./middlewares/error");
@@ -27,6 +31,13 @@ connectDB();
 app.use(morgan("dev")); // logging middleware
 app.use(express.json()); // body parsing middleware
 app.use(fileUpload());
+app.use(
+  cookieSession({
+    name: "timruesinkSession",
+    keys: [keys.cookieKey],
+    maxAge: 4 * 60 * 60 * 1000, // 4 hours for this cookie
+  })
+);
 
 const dir = path.join(__dirname, "public");
 app.use("/api/v1/photos", express.static(dir));

@@ -27,14 +27,19 @@ exports.register = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("User already exists", 422));
   }
   const user = await new User(req.body).save();
-  res.status(201).json({ success: true, token: getToken(user) });
+  const token = getToken(req.user);
+  req.session.token = token;
+  res.status(201).json({ success: true, token: token });
 });
 
 // @desc Log in a user
 // @route POST /api/v1/login
 // @access Public
 exports.login = (req, res, next) => {
-  res.status(201).json({ success: true, token: getToken(req.user) });
+  const token = getToken(req.user);
+  req.session.token = token;
+  console.log(req.session.token);
+  res.status(201).json({ success: true, token: token });
 };
 
 // @desc get current logged in user info
