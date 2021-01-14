@@ -56,6 +56,7 @@ class ContactForm extends React.Component {
       type: "success",
       content: "Thanks for contacting me!",
     });
+    window.scrollTo(0, 0);
   };
 
   render() {
@@ -93,7 +94,7 @@ class ContactForm extends React.Component {
             />
           </div>
           <button type="submit" className="btn btn-primary">
-            Sign in
+            Submit
           </button>
         </form>
       </div>

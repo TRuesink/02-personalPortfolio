@@ -30,3 +30,8 @@ export const ERROR_MESSAGES = "ERROR_MESSAGES";
 // alert types
 export const SHOW_ALERT = "SHOW_ALERT";
 export const DISMISS_ALERT = "DISMISS_ALERT";
+
+// user types
+export const FETCH_USER = "FETCH_USER";
+export const IS_FETCHING_USER = "IS_FETCHING_USER";
+export const ERROR_USER = "ERROR_USER";

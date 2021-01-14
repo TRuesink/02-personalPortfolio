@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-class FeaturedProjects extends React.Component {
+class FeaturedBlog extends React.Component {
   renderFeaturedProject() {
     const featured = this.props.posts.filter((post) => {
-      return post.featured === true && post.type === "project";
+      return post.featured === true && post.type === "blog";
     });
-    console.log(featured);
     return (
       <div className="content">
         <img
@@ -56,4 +55,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(FeaturedProjects);
+export default connect(mapStateToProps)(FeaturedBlog);

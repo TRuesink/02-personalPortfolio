@@ -8,7 +8,7 @@ class Banner extends React.Component {
       <div className="custom-section banner">
         <img className="portfolio-image" src={bannerPhoto}></img>
         <div className="content">
-          <h1>
+          <h1 className="display-4">
             <b>TIM RUESINK</b>
           </h1>
           <h5>

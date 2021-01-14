@@ -1,22 +1,23 @@
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 
-import projectBanner from "../../static/images/projectBanner.jpg";
+import contactBanner from "../../static/images/contactBanner.jpg";
 
-class Banner extends React.Component {
+class ContactBanner extends React.Component {
   render() {
     return (
       <div className="custom-section banner">
-        <img className="portfolio-image" src={projectBanner}></img>
+        <img className="portfolio-image" src={contactBanner}></img>
         <div className="content">
           <h1 className="display-4">
-            <b>PROJECTS</b>
+            <b>CONTACT</b>
           </h1>
           <h5>
-            by Training.
+            text
             <br />
+            text
             <br />
-            by Passion.
+            text
           </h5>
         </div>
       </div>
@@ -24,4 +25,4 @@ class Banner extends React.Component {
   }
 }
 
-export default Banner;
+export default ContactBanner;

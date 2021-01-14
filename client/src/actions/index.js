@@ -20,6 +20,9 @@ import {
   ERROR_MESSAGES,
   SHOW_ALERT,
   DISMISS_ALERT,
+  IS_FETCHING_USER,
+  FETCH_USER,
+  ERROR_USER,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -105,7 +108,7 @@ export const createMessage = (formValues) => {
       const message = await axios.post("/api/v1/messages", formValues);
       dispatch({ type: CREATE_MESSAGE, payload: message.data });
       dispatch(reset("contactForm"));
-      history.push("/");
+      history.push("/#");
     } catch (error) {
       if (!error.response.message) {
         return dispatch({
@@ -115,6 +118,36 @@ export const createMessage = (formValues) => {
       }
       dispatch({ type: ERROR_MESSAGES, payload: error.response.message });
     }
+  };
+};
+
+// --------------------- USER ACTION CREATORS ---------------------- //
+// get a user name
+export const fetchUser = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_USER });
+      const user = await axios.get(`/api/v1/user/${id}`);
+      dispatch({ type: FETCH_USER, payload: user.data.data });
+    } catch (error) {
+      if (!error.response.message) {
+        return dispatch({
+          type: ERROR_USER,
+          payload: error.response.data,
+        });
+      }
+      dispatch({ type: ERROR_USER, payload: error.response.message });
+    }
+  };
+};
+
+// --------------------- POST & USERS ACTION CREATORS --------------- //
+export const fetchPostsAndUsers = () => {
+  return async (dispatch, getState) => {
+    await dispatch(fetchPosts());
+
+    const userIds = _.uniq(_.map(getState().posts.data, "user"));
+    userIds.forEach((id) => dispatch(fetchUser(id)));
   };
 };
 

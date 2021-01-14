@@ -37,9 +37,26 @@ exports.login = (req, res, next) => {
   res.status(201).json({ success: true, token: getToken(req.user) });
 };
 
-// @desc get user info
+// @desc get current logged in user info
 // @route GET /api/v1/user
 // @access Public
-exports.getUser = (req, res, next) => {
+exports.getMe = (req, res, next) => {
   res.status(200).json({ success: true, data: req.user.name });
 };
+
+// @desc get user name
+// @route GET /api/v1/user/:id
+// @access Public
+exports.getUser = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(
+      new ErrorResponse(`User not found with id of ${req.params.id}`)
+    );
+  }
+
+  res
+    .status(200)
+    .json({ success: true, data: { name: user.name, id: user.id } });
+});

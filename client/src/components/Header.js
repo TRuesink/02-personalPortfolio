@@ -1,6 +1,7 @@
 import React from "react";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import SignInForm from "./auth/SignInForm";
 
 class Header extends React.Component {
   render() {
@@ -32,7 +33,19 @@ class Header extends React.Component {
               </ul>
             </Nav>
             <Nav>
-              <button className="btn btn-primary">Sign In</button>
+              <Dropdown alignRight="false">
+                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                  Sign In
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <SignInForm />
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="#">
+                    New around here? Sign up
+                  </a>
+                </Dropdown.Menu>
+              </Dropdown>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

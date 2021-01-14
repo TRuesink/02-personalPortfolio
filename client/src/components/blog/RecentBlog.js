@@ -2,10 +2,10 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-class RecentProjects extends React.Component {
+class RecentBlog extends React.Component {
   renderRecentPosts() {
     const recent = this.props.posts.filter((post) => {
-      return post.featured === false && post.type === "project";
+      return post.featured === false && post.type === "blog";
     });
     return recent.map((post) => {
       return (
@@ -81,4 +81,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(RecentProjects);
+export default connect(mapStateToProps)(RecentBlog);
