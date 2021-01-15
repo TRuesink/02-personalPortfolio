@@ -16,7 +16,7 @@ class AdminPage extends React.Component {
     return (
       <div
         className="container"
-        style={{ paddingTop: "12rem", paddingBottom: "12rem" }}
+        style={{ paddingTop: "8rem", paddingBottom: "12rem" }}
       >
         <div className="row">
           <div className="col">

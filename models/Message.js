@@ -7,6 +7,7 @@ const messageSchema = new Schema({
   email: { type: String, required: [true, "Please include your email"] },
   subject: { type: String, required: [true, "Please include a subject"] },
   message: { type: String, required: [true, "Please include a message"] },
+  read: { type: Boolean, default: false },
   createdAt: {
     type: Date,
     default: Date.now,

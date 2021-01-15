@@ -4,6 +4,8 @@ import {
   IS_FETCHING_MESSAGES,
   ERROR_MESSAGES,
   FETCH_MESSAGES,
+  UPDATE_MESSAGE,
+  DELETE_MESSAGE,
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -30,6 +32,18 @@ const messageReducer = (state = INITIAL_STATE, action) => {
       return {
         isFetching: true,
         data: { ...state.data },
+        errorMessage: "",
+      };
+    case UPDATE_MESSAGE:
+      return {
+        isFetching: false,
+        data: { ...state.data, [action.payload._id]: action.payload },
+        errorMessage: "",
+      };
+    case DELETE_MESSAGE:
+      return {
+        isFetching: false,
+        data: _.omit(state.data, action.payload),
         errorMessage: "",
       };
     case ERROR_MESSAGES:

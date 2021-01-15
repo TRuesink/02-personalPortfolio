@@ -28,6 +28,8 @@ import {
   SIGN_OUT,
   ERROR_AUTH,
   IS_FETCHING_AUTH,
+  UPDATE_MESSAGE,
+  DELETE_MESSAGE,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -108,6 +110,34 @@ export const fetchMessages = () => {
       dispatch({ type: IS_FETCHING_MESSAGES });
       const response = await axios.get("/api/v1/messages");
       dispatch({ type: FETCH_MESSAGES, payload: response.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_MESSAGES, payload: error.response.data.error });
+    }
+  };
+};
+
+// update a message
+export const updateMessage = (id, value) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_MESSAGES });
+      const response = await axios.put(`/api/v1/messages/${id}`, {
+        read: value,
+      });
+      dispatch({ type: UPDATE_MESSAGE, payload: response.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_MESSAGES, payload: error.response.data.error });
+    }
+  };
+};
+
+// delete a message
+export const deleteMessage = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_MESSAGES });
+      await axios.delete(`/api/v1/messages/${id}`);
+      dispatch({ type: DELETE_MESSAGE, payload: id });
     } catch (error) {
       dispatch({ type: ERROR_MESSAGES, payload: error.response.data.error });
     }
