@@ -6,12 +6,12 @@ class FeaturedProjects extends React.Component {
     const featured = this.props.posts.filter((post) => {
       return post.featured === true && post.type === "project";
     });
-    console.log(featured);
     return (
       <div className="content">
         <img
           style={{ height: "auto" }}
           src={`/api/v1/photos/uploads/${featured[0].photo}`}
+          alt={featured[0].photo}
         ></img>
         <div className="featured-post-description">
           <h3 className="post-title">{featured[0].title}</h3>
@@ -37,7 +37,7 @@ class FeaturedProjects extends React.Component {
         <div className="resume-section">
           <h1 className="title">FEATURED</h1>
           {this.props.isFetching || this.props.posts.length === 0 ? (
-            <div class="ui active centered inline loader"></div>
+            <div className="ui active centered inline loader"></div>
           ) : (
             <>{this.renderFeaturedProject()}</>
           )}

@@ -27,9 +27,12 @@ exports.register = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("User already exists", 422));
   }
   const user = await new User(req.body).save();
-  const token = getToken(req.user);
+  const token = getToken(user);
   req.session.token = token;
-  res.status(201).json({ success: true, token: token });
+  res.status(201).json({
+    success: true,
+    data: { name: user.name, role: user.role },
+  });
 });
 
 // @desc Log in a user
@@ -38,15 +41,31 @@ exports.register = asyncHandler(async (req, res, next) => {
 exports.login = (req, res, next) => {
   const token = getToken(req.user);
   req.session.token = token;
-  console.log(req.session.token);
-  res.status(201).json({ success: true, token: token });
+  res.status(201).json({
+    success: true,
+    data: { name: req.user.name, role: req.user.role },
+  });
+};
+
+// @desc Log out a user
+// @route GET /api/v1/logout
+// @access Public
+exports.logout = (req, res, next) => {
+  req.session = null;
+  res.status(200).json({
+    success: true,
+    data: [],
+  });
 };
 
 // @desc get current logged in user info
 // @route GET /api/v1/user
 // @access Public
 exports.getMe = (req, res, next) => {
-  res.status(200).json({ success: true, data: req.user.name });
+  res.status(200).json({
+    success: true,
+    data: { name: req.user.name, role: req.user.role },
+  });
 };
 
 // @desc get user name

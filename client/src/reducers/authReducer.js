@@ -1,9 +1,15 @@
-import _ from "lodash";
-import { AUTH_USER, IS_FETCHING_AUTH, ERROR_AUTH } from "../actions/types";
+//import _ from "lodash";
+import {
+  AUTH_USER,
+  IS_FETCHING_AUTH,
+  ERROR_AUTH,
+  SIGN_OUT,
+} from "../actions/types";
 
 const INITIAL_STATE = {
   isFetching: false,
-  token: "",
+  user: { name: "init", role: "init" },
+  isSignedIn: false,
   errorMessage: "",
 };
 
@@ -12,19 +18,29 @@ const authReducer = (state = INITIAL_STATE, action) => {
     case AUTH_USER:
       return {
         isFetching: false,
-        token: action.payload,
+        isSignedIn: true,
+        user: action.payload,
         errorMessage: "",
       };
     case IS_FETCHING_AUTH:
       return {
         isFetching: true,
-        token: "",
+        isSignedIn: false,
+        user: { name: "pending", role: "pending" },
+        errorMessage: "",
+      };
+    case SIGN_OUT:
+      return {
+        isFetching: false,
+        isSignedIn: false,
+        user: { name: null, role: null },
         errorMessage: "",
       };
     case ERROR_AUTH:
       return {
         isFetching: false,
-        token: "",
+        isSignedIn: false,
+        user: { name: null, role: null },
         errorMessage: action.payload,
       };
     default:

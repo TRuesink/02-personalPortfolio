@@ -3,6 +3,7 @@ import {
   CREATE_MESSAGE,
   IS_FETCHING_MESSAGES,
   ERROR_MESSAGES,
+  FETCH_MESSAGES,
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -13,6 +14,12 @@ const INITIAL_STATE = {
 
 const messageReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case FETCH_MESSAGES:
+      return {
+        isFetching: false,
+        data: { ...state.data, ..._.mapKeys(action.payload, "_id") },
+        errorMessage: "",
+      };
     case CREATE_MESSAGE:
       return {
         isFetching: false,

@@ -1,14 +1,15 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { logInUser, showAlert } from "../../actions";
+import { register, showAlert } from "../../actions";
+import history from "../../history";
 
 const emailRegExp = new RegExp(
   /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
 );
 
-class SignInForm extends React.Component {
-  renderInput({ input, meta, label, placeholder }) {
+class RegisterForm extends React.Component {
+  renderInput({ input, meta, label, placeholder, type }) {
     const className = `form-control ${
       meta.error && meta.touched ? "is-invalid" : ""
     }`;
@@ -17,7 +18,7 @@ class SignInForm extends React.Component {
         <label>{label}</label>
         <input
           {...input}
-          type={label.toLowerCase()}
+          type={type}
           className={className}
           placeholder={placeholder}
         ></input>
@@ -29,7 +30,8 @@ class SignInForm extends React.Component {
   }
 
   onSubmit = (formValues) => {
-    this.props.logInUser(formValues, () => {
+    // console.log(formValues);
+    this.props.register(formValues, () => {
       if (this.props.auth.errorMessage !== "") {
         return this.props.showAlert({
           type: "danger",
@@ -38,7 +40,7 @@ class SignInForm extends React.Component {
       }
       this.props.showAlert({
         type: "success",
-        content: "You've signed in successfully",
+        content: "Thanks for creating an account!",
       });
     });
   };
@@ -59,19 +61,35 @@ class SignInForm extends React.Component {
           onSubmit={this.props.handleSubmit(this.onSubmit)}
         >
           <Field
+            name="name"
+            component={this.renderInput}
+            type="text"
+            label="Name"
+            placeholder="Jon Doe"
+          />
+          <Field
             name="email"
             component={this.renderInput}
+            type="email"
             label="Email"
             placeholder="email@example.com"
           />
           <Field
             name="password"
             component={this.renderInput}
+            type="password"
             label="Password"
             placeholder="password"
           />
+          <Field
+            name="passwordConfirm"
+            component={this.renderInput}
+            type="password"
+            label="Confirm Password"
+            placeholder="password"
+          />
           <button type="submit" className="btn btn-primary">
-            Sign In
+            Register
           </button>
         </form>
       </div>
@@ -81,6 +99,9 @@ class SignInForm extends React.Component {
 
 const validate = (formValues) => {
   const errors = {};
+  if (!formValues.name) {
+    errors.name = "You must enter your name";
+  }
   if (!emailRegExp.test(formValues.email)) {
     errors.email = "You must enter a valid email";
   }
@@ -89,13 +110,17 @@ const validate = (formValues) => {
     errors.password = "You must enter a password";
   }
 
+  if (formValues.password !== formValues.passwordConfirm) {
+    errors.passwordConfirm = "Passwords do not match";
+  }
+
   return errors;
 };
 
-SignInForm = reduxForm({
-  form: "signInForm",
+RegisterForm = reduxForm({
+  form: "registerForm",
   validate: validate,
-})(SignInForm);
+})(RegisterForm);
 
 const mapStateToProps = (state) => {
   return {
@@ -103,4 +128,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { logInUser, showAlert })(SignInForm);
+export default connect(mapStateToProps, { register, showAlert })(RegisterForm);

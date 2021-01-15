@@ -26,6 +26,7 @@ export const ERROR_POSTS = "ERROR_POSTS";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const IS_FETCHING_MESSAGES = "IS_FETCHING_MESSAGES";
 export const ERROR_MESSAGES = "ERROR_MESSAGES";
+export const FETCH_MESSAGES = "FETCH_MESSAGES";
 
 // alert types
 export const SHOW_ALERT = "SHOW_ALERT";

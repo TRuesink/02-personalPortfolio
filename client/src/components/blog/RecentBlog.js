@@ -1,6 +1,7 @@
 import React from "react";
-
 import { connect } from "react-redux";
+
+import PostItem from "../PostItem";
 
 class RecentBlog extends React.Component {
   renderRecentPosts() {
@@ -9,50 +10,11 @@ class RecentBlog extends React.Component {
     });
     return recent.map((post) => {
       return (
-        <div className="card mb-3" style={{ maxWidth: "100%" }}>
-          <div className="row no-gutters">
-            <div className="col-md-3">
-              <img
-                style={{
-                  maxHeight: "10rem",
-                  maxWidth: "100%",
-                  objectFit: "cover",
-                }}
-                src={`/api/v1/photos/uploads/${post.photo}`}
-                className="card-img"
-                alt="..."
-              ></img>
-            </div>
-            <div className="col-md-9">
-              <div className="card-body">
-                <h5
-                  style={{ color: "#02729e", fontWeight: "bold" }}
-                  className="card-title"
-                >
-                  {post.title}
-                </h5>
-                <p className="card-text">{post.teaser}</p>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <p style={{ marginBottom: 0 }} className="text-muted">
-                    {this.props.users[post.user]}
-                  </p>
-                  <p
-                    style={{ marginBottom: 0 }}
-                    className="text-muted font-italic"
-                  >
-                    {new Date(post.createdAt).toLocaleDateString()}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <PostItem
+          post={post}
+          userName={this.props.users[post.user]}
+          key={post._id}
+        />
       );
     });
   }
@@ -62,7 +24,7 @@ class RecentBlog extends React.Component {
         <div className="resume-section">
           <h1 className="title">RECENT</h1>
           {this.props.isFetching || this.props.posts.length === 0 ? (
-            <div class="ui active centered inline loader"></div>
+            <div className="ui active centered inline loader"></div>
           ) : (
             <>{this.renderRecentPosts()}</>
           )}

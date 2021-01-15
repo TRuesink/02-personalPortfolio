@@ -1,5 +1,4 @@
 import React from "react";
-import piLogo from "../../static/images/piLogo.jpg";
 import { connect } from "react-redux";
 import { fetchJobs } from "../../actions";
 
@@ -32,8 +31,11 @@ class Experience extends React.Component {
         const startDate = new Date(job.startDate);
         const endDate = new Date(job.endDate);
         return (
-          <div className="custom-card">
-            <img src={`/api/v1/photos/static/${job.photo}`}></img>
+          <div className="custom-card" key={job._id}>
+            <img
+              src={`/api/v1/photos/static/${job.photo}`}
+              alt={job.photo}
+            ></img>
             <div className="info">
               <div className="header">
                 <h4 className="job-title">{job.title}</h4>
@@ -55,7 +57,7 @@ class Experience extends React.Component {
         <div className="resume-section">
           <h1 className="title">EXPERIENCE</h1>
           {this.props.isFetching || this.props.jobs.length === 0 ? (
-            <div class="ui active centered inline loader"></div>
+            <div className="ui active centered inline loader"></div>
           ) : (
             <div className="content-column">{this.renderJobs()}</div>
           )}

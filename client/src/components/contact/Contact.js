@@ -18,13 +18,13 @@ class Contact extends React.Component {
             <div className="contact-info">
               <div style={{ padding: "2rem" }}>
                 <h3>
-                  <i class="mail icon"></i>Email:
+                  <i className="mail icon"></i>Email:
                 </h3>
                 <h5 className="text-primary">timothy.ruesink@gmail.com</h5>
               </div>
               <div style={{ padding: "2rem" }}>
                 <h3>
-                  <i class="phone icon"></i>Call:
+                  <i className="phone icon"></i>Call:
                 </h3>
                 <h5 className="text-primary">(608) 327-9816</h5>
               </div>

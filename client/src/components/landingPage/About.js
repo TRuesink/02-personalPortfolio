@@ -17,7 +17,11 @@ class About extends React.Component {
             felis sed felis dictum ultrices.
           </p>
           <div className="content">
-            <img style={{ height: "auto" }} src={about_photo}></img>
+            <img
+              style={{ height: "auto" }}
+              src={about_photo}
+              alt="aboutPhoto"
+            ></img>
             <div className="description">
               <h3>Software / Sales / Mechanical Engineer</h3>
               <p className="text-muted">

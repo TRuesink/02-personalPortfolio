@@ -1,6 +1,4 @@
 import React from "react";
-import wiLogo from "../../static/images/wiLogo.jpg";
-import wmuLogo from "../../static/images/wmuLogo.jpg";
 
 import { connect } from "react-redux";
 import { fetchEducation } from "../../actions";
@@ -34,8 +32,11 @@ class Education extends React.Component {
         const startDate = new Date(school.startDate);
         const endDate = new Date(school.endDate);
         return (
-          <div className="custom-card">
-            <img src={`/api/v1/photos/static/${school.photo}`}></img>
+          <div className="custom-card" key={school._id}>
+            <img
+              src={`/api/v1/photos/static/${school.photo}`}
+              alt={school.photo}
+            ></img>
             <div className="info">
               <div className="header">
                 <h4 className="job-title">
@@ -63,7 +64,7 @@ class Education extends React.Component {
         <div className="resume-section">
           <h1 className="title">EDUCATION</h1>
           {this.props.isFetching || this.props.schools.length === 0 ? (
-            <div class="ui active centered inline loader"></div>
+            <div className="ui active centered inline loader"></div>
           ) : (
             <div className="content-column">{this.renderSchools()}</div>
           )}

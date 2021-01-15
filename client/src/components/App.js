@@ -14,6 +14,8 @@ import { connect } from "react-redux";
 import { dismissAlert } from "../actions";
 import { Alert } from "react-bootstrap";
 import ContactPage from "./contact/ContactPage";
+import RegisterPage from "./auth/RegisterPage";
+import requireAuth from "./requireAuth";
 
 class App extends React.Component {
   renderAlert() {
@@ -43,7 +45,8 @@ class App extends React.Component {
               <Route path="/blog" exact component={BlogPage} />
               <Route path="/projects" exact component={ProjectPage} />
               <Route path="/contact" exact component={ContactPage} />
-              <Route path="/admin" exact component={AdminPage} />
+              <Route path="/register" exact component={RegisterPage} />
+              <Route path="/admin" component={requireAuth(AdminPage)} />
             </Switch>
           </div>
         </Router>

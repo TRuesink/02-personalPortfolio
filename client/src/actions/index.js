@@ -18,6 +18,7 @@ import {
   IS_FETCHING_MESSAGES,
   CREATE_MESSAGE,
   ERROR_MESSAGES,
+  FETCH_MESSAGES,
   SHOW_ALERT,
   DISMISS_ALERT,
   IS_FETCHING_USER,
@@ -84,7 +85,7 @@ export const fetchPosts = () => {
   };
 };
 
-// --------------------- MESSAGE RESOURCES ---------------------- //
+// --------------------- MESSAGE ACTION CREATORS ---------------------- //
 // create Message
 export const createMessage = (formValues) => {
   return async (dispatch) => {
@@ -94,6 +95,19 @@ export const createMessage = (formValues) => {
       dispatch({ type: CREATE_MESSAGE, payload: message.data });
       dispatch(reset("contactForm"));
       history.push("/#");
+    } catch (error) {
+      dispatch({ type: ERROR_MESSAGES, payload: error.response.data.error });
+    }
+  };
+};
+
+// fetch all messages
+export const fetchMessages = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_MESSAGES });
+      const response = await axios.get("/api/v1/messages");
+      dispatch({ type: FETCH_MESSAGES, payload: response.data.data });
     } catch (error) {
       dispatch({ type: ERROR_MESSAGES, payload: error.response.data.error });
     }
@@ -131,9 +145,60 @@ export const logInUser = (formValues, callback) => {
     try {
       dispatch({ type: IS_FETCHING_AUTH });
       const response = await axios.post(`/api/v1/login`, formValues);
-      dispatch({ type: AUTH_USER, payload: response.data.token });
+      dispatch({ type: AUTH_USER, payload: response.data.data });
       callback();
       dispatch(reset("signInForm"));
+      history.push("/");
+    } catch (error) {
+      dispatch({ type: ERROR_AUTH, payload: error.response.data.error });
+      callback();
+    }
+  };
+};
+
+// get current user info
+export const getMe = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_AUTH });
+      const response = await axios.get(`/api/v1/me`);
+      dispatch({ type: AUTH_USER, payload: response.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_AUTH, payload: error.response.data.error });
+    }
+  };
+};
+
+// sign out
+export const signOut = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_AUTH });
+      await axios.get(`/api/v1/logout`);
+      dispatch({ type: SIGN_OUT });
+      dispatch({
+        type: SHOW_ALERT,
+        payload: {
+          type: "success",
+          content: "You have signed out successfully",
+        },
+      });
+    } catch (error) {
+      dispatch({ type: ERROR_AUTH, payload: error.response.data.error });
+    }
+  };
+};
+
+// Register a user
+export const register = (formValues, callback) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_AUTH });
+      const response = await axios.post(`/api/v1/register`, formValues);
+      dispatch({ type: AUTH_USER, payload: response.data.data });
+      callback();
+      dispatch(reset("registerForm"));
+      history.push("/");
     } catch (error) {
       dispatch({ type: ERROR_AUTH, payload: error.response.data.error });
       callback();

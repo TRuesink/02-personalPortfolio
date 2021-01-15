@@ -1,12 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 
 class Sidebar extends React.Component {
   renderLinks() {
     return this.props.sections.map((section) => {
       return (
-        <li className="nav-item">
+        <li className="nav-item" key={section.name}>
           <ScrollLink
             className="nav-link custom-sidebar-link"
             activeClass=""
@@ -15,7 +14,7 @@ class Sidebar extends React.Component {
             smooth={true}
             duration={500}
           >
-            <i class={`${section.icon} icon custom-icon`}></i>
+            <i className={`${section.icon} icon custom-icon`}></i>
             <div className="sidebar-header">{section.name}</div>
           </ScrollLink>
         </li>

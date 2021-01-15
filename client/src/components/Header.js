@@ -2,8 +2,50 @@ import React from "react";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import SignInForm from "./auth/SignInForm";
+import { connect } from "react-redux";
+import { getMe, signOut } from "../actions";
 
 class Header extends React.Component {
+  componentDidMount() {
+    this.props.getMe();
+  }
+
+  renderAuth() {
+    if (this.props.auth.isSignedIn) {
+      return (
+        <>
+          <Navbar.Text style={{ marginRight: "2rem" }}>
+            Hi {this.props.auth.user.name}
+          </Navbar.Text>
+
+          <button
+            onClick={() => this.props.signOut()}
+            className="btn btn-primary"
+          >
+            Sign Out
+          </button>
+        </>
+      );
+    }
+    return (
+      <>
+        <Dropdown alignRight={true}>
+          <Dropdown.Toggle variant="primary" id="dropdown-basic">
+            Sign In
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <SignInForm />
+            <div className="dropdown-divider"></div>
+            <Link className="dropdown-item" to="/register">
+              Don't have an account? Register
+            </Link>
+          </Dropdown.Menu>
+        </Dropdown>
+      </>
+    );
+  }
+
   render() {
     return (
       <div>
@@ -32,21 +74,7 @@ class Header extends React.Component {
                 </li>
               </ul>
             </Nav>
-            <Nav>
-              <Dropdown alignRight="false">
-                <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                  Sign In
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <SignInForm />
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
-                    New around here? Sign up
-                  </a>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Nav>
+            <Nav>{this.renderAuth()}</Nav>
           </Navbar.Collapse>
         </Navbar>
       </div>
@@ -54,4 +82,10 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps, { getMe, signOut })(Header);

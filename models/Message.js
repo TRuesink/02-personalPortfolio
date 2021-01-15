@@ -7,6 +7,10 @@ const messageSchema = new Schema({
   email: { type: String, required: [true, "Please include your email"] },
   subject: { type: String, required: [true, "Please include a subject"] },
   message: { type: String, required: [true, "Please include a message"] },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const messageClass = mongoose.model("Message", messageSchema);

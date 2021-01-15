@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import backpacking_1 from "../../static/images/backpacking_1.jpg";
-import portfolio2 from "../../static/images/portfolio_2.jpg";
 import { connect } from "react-redux";
 import { fetchPosts } from "../../actions";
 
@@ -14,12 +12,12 @@ class Portfolio extends React.Component {
     const projects = this.props.posts.filter((post) => post.type === "project");
     return projects.map((project) => {
       return (
-        <Link to={`/projects/${project.id}`}>
+        <Link to={`/projects/${project.id}`} key={project.id}>
           <div className="card text-white image-card">
             <img
               className="card-img"
               src={`/api/v1/photos/uploads/${project.photo}`}
-              alt="Card image"
+              alt={project.photo}
             ></img>
             <div className="card-img-overlay custom-card-text">
               <h3 className="card-title">{project.title}</h3>
@@ -40,7 +38,7 @@ class Portfolio extends React.Component {
           <h1 className="title">PORTFOLIO</h1>
 
           {this.props.isFetching || this.props.posts.length === 0 ? (
-            <div class="ui active centered inline loader"></div>
+            <div className="ui active centered inline loader"></div>
           ) : (
             <div className="card-columns">{this.renderPosts()}</div>
           )}

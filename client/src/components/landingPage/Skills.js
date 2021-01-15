@@ -12,7 +12,11 @@ class Skills extends React.Component {
       (skill) => skill.category === "Software Engineering"
     );
     return softareSkills.map((skill) => {
-      return <div className="custom-pill btn btn-primary">{skill.name}</div>;
+      return (
+        <div className="custom-pill" key={skill._id}>
+          {skill.name}
+        </div>
+      );
     });
   }
   renderSalesSkills() {
@@ -20,7 +24,11 @@ class Skills extends React.Component {
       (skill) => skill.category === "Sales"
     );
     return salesSkills.map((skill) => {
-      return <div className="custom-pill btn btn-primary">{skill.name}</div>;
+      return (
+        <div className="custom-pill" key={skill._id}>
+          {skill.name}
+        </div>
+      );
     });
   }
 
@@ -29,7 +37,11 @@ class Skills extends React.Component {
       (skill) => skill.category === "Mechanical Engineering"
     );
     return engineeringSkills.map((skill) => {
-      return <div className="custom-pill btn btn-primary">{skill.name}</div>;
+      return (
+        <div className="custom-pill" key={skill._id}>
+          {skill.name}
+        </div>
+      );
     });
   }
 
@@ -39,7 +51,7 @@ class Skills extends React.Component {
         <div className="resume-section">
           <h1 className="title">SKILLS</h1>
           {this.props.isFetching || this.props.skills.length === 0 ? (
-            <div class="ui active centered inline loader"></div>
+            <div className="ui active centered inline loader"></div>
           ) : (
             <div className="content-column">
               <h3>Software</h3>

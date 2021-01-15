@@ -18,4 +18,6 @@ router.route("/me").get(protect, getMe);
 
 router.route("/user/:id").get(getUser);
 
+router.route("/logout").get(logout);
+
 module.exports = router;

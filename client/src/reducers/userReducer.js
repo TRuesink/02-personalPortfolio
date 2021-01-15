@@ -1,4 +1,4 @@
-import _ from "lodash";
+//import _ from "lodash";
 import { FETCH_USER, IS_FETCHING_USER, ERROR_USER } from "../actions/types";
 
 const INITIAL_STATE = {
