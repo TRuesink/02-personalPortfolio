@@ -22,6 +22,12 @@ export const DELETE_POST = "DELETE_POST";
 export const IS_FETCHING_POSTS = "IS_FETCHING_POSTS";
 export const ERROR_POSTS = "ERROR_POSTS";
 
+// photo resource
+export const UPLOAD_PHOTO = "UPLOAD_PHOTO";
+export const IS_FETCHING_PHOTO = "IS_FETCHING_PHOTO";
+export const ERROR_PHOTO = "ERROR_PHOTO";
+export const SELECT_PHOTO = "SELECT_PHOTO";
+
 // message resource
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const IS_FETCHING_MESSAGES = "IS_FETCHING_MESSAGES";

@@ -9,6 +9,7 @@ import alertReducer from "./alertReducer";
 import userReducer from "./userReducer";
 import authReducer from "./authReducer";
 import loadingReducer from "./loadingReducer";
+import photoReducer from "./photoReducer";
 
 export default combineReducers({
   skills: skillsReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
   users: userReducer,
   auth: authReducer,
   loading: loadingReducer,
+  photo: photoReducer,
   form: formReducer,
 });

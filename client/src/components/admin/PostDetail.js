@@ -3,7 +3,7 @@ import _ from "lodash";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
 import { fetchPost, updatePost, deletePost } from "../../actions";
-import draftToHtml from "draftjs-to-html";
+import FileUpload from "./FileUpload";
 
 class PostDetail extends React.Component {
   componentDidMount() {
@@ -37,17 +37,23 @@ class PostDetail extends React.Component {
         {!this.props.post ? (
           <div className="ui active centered inline loader"></div>
         ) : (
-          <PostForm
-            postId={this.props.match.params.id}
-            initialValues={_.pick(this.props.post, [
-              "title",
-              "teaser",
-              "type",
-              "featured",
-              "content",
-            ])}
-            onSubmit={this.onSubmit}
-          />
+          <>
+            <FileUpload
+              postId={this.props.match.params.id}
+              currentPhoto={this.props.post.photo}
+            />
+            <PostForm
+              postId={this.props.match.params.id}
+              initialValues={_.pick(this.props.post, [
+                "title",
+                "teaser",
+                "type",
+                "featured",
+                "content",
+              ])}
+              onSubmit={this.onSubmit}
+            />
+          </>
         )}
       </div>
     );

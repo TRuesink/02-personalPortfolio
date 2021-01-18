@@ -4,6 +4,12 @@ const colors = require("colors");
 const morgan = require("morgan");
 const fileUpload = require("express-fileupload");
 const cookieSession = require("cookie-session");
+const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
+const xss = require("xss-clean");
+const hpp = require("hpp");
+const rateLimit = require("express-rate-limit");
+const cors = require("cors");
 
 // mongoDB connector
 const connectDB = require("./utils/connectDB");
@@ -38,6 +44,27 @@ app.use(
     maxAge: 4 * 60 * 60 * 1000, // 4 hours for this cookie
   })
 );
+//sanitize data
+app.use(mongoSanitize());
+
+// set security headers
+app.use(helmet());
+
+// prevent cross site scripting attacks
+app.use(xss());
+
+// prevent http param polution
+app.use(hpp());
+
+// Rate limit
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 mins
+  max: 100,
+});
+app.use(limiter);
+
+// Cross origin resource sharing
+app.use(cors());
 
 const dir = path.join(__dirname, "public");
 app.use("/api/v1/photos", express.static(dir));

@@ -38,6 +38,10 @@ import {
   UPDATE_POST,
   CREATE_POST,
   DELETE_POST,
+  IS_FETCHING_PHOTO,
+  UPLOAD_PHOTO,
+  ERROR_PHOTO,
+  SELECT_PHOTO,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -245,6 +249,24 @@ export const deleteUser = (id) => {
       dispatch({ type: ERROR_USER, payload: error.response.data.error });
     }
   };
+};
+
+// upload a post photo
+export const uploadPhoto = (id, formData) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_PHOTO });
+      await axios.put(`/api/v1/posts/${id}/photos`, formData);
+      dispatch({ type: UPLOAD_PHOTO, payload: id });
+    } catch (error) {
+      dispatch({ type: ERROR_PHOTO, payload: error.response.data.error });
+    }
+  };
+};
+
+// select photo
+export const selectPhoto = (photo) => {
+  return { type: SELECT_PHOTO, payload: photo };
 };
 
 // --------------------- POST & USERS ACTION CREATORS --------------- //
