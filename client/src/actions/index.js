@@ -294,7 +294,9 @@ export const logInUser = (formValues, callback) => {
   return async (dispatch) => {
     try {
       dispatch({ type: IS_FETCHING_AUTH });
-      const response = await axios.post(`/api/v1/login`, formValues);
+      const response = await axios.post(`/api/v1/login`, formValues, {
+        withCredentials: true,
+      });
       dispatch({ type: AUTH_USER, payload: response.data.data });
       callback();
       dispatch(reset("signInForm"));
