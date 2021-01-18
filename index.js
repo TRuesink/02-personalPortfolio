@@ -33,6 +33,7 @@ const messageRouter = require("./routes/messageRouter");
 const app = express();
 connectDB();
 
+app.set("trust proxy", 1);
 //middlewares
 app.use(morgan("dev")); // logging middleware
 app.use(express.json()); // body parsing middleware
@@ -44,7 +45,7 @@ app.use(
     maxAge: 4 * 60 * 60 * 1000, // 4 hours for this cookie
     cookie: {
       secure: true,
-      domain: "timruesink.com",
+      domain: "http://timruesink.com",
     },
   })
 );
