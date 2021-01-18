@@ -42,6 +42,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 exports.login = (req, res, next) => {
   const token = getToken(req.user);
   req.session.token = token;
+  console.log(req.session.token);
   res.status(201).json({
     success: true,
     data: { name: req.user.name, role: req.user.role },
@@ -81,12 +82,10 @@ exports.getUsername = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res
-    .status(200)
-    .json({
-      success: true,
-      data: _.pick(user, ["role", "_id", "name", "email", "createdAt"]),
-    });
+  res.status(200).json({
+    success: true,
+    data: _.pick(user, ["role", "_id", "name", "email", "createdAt"]),
+  });
 });
 
 // @desc get list of users
