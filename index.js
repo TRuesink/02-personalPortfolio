@@ -43,6 +43,7 @@ app.use(
     name: "timruesinkSession",
     keys: [keys.cookieKey],
     maxAge: 4 * 60 * 60 * 1000, // 4 hours for this cookie
+    proxy: true,
     cookie: {
       secure: false,
     },
