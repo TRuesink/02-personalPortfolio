@@ -42,7 +42,6 @@ exports.register = asyncHandler(async (req, res, next) => {
 exports.login = (req, res, next) => {
   const token = getToken(req.user);
   req.session.token = token;
-  console.log(req.session.token);
   res.status(201).json({
     success: true,
     data: { name: req.user.name, role: req.user.role },
