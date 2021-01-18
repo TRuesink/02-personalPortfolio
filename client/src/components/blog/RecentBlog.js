@@ -12,7 +12,11 @@ class RecentBlog extends React.Component {
       return (
         <PostItem
           post={post}
-          userName={this.props.users[post.user]}
+          userName={
+            this.props.users[post.user] === undefined
+              ? "loading"
+              : this.props.users[post.user].name
+          }
           key={post._id}
         />
       );
@@ -40,6 +44,7 @@ const mapStateToProps = (state) => {
     isFetching: state.posts.isFetching,
     errorMessage: state.posts.errorMessage,
     users: state.users.data,
+    loading: state.loading,
   };
 };
 

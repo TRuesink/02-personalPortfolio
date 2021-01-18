@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middlewares/async");
 const User = require("../models/User");
@@ -69,9 +70,9 @@ exports.getMe = (req, res, next) => {
 };
 
 // @desc get user name
-// @route GET /api/v1/user/:id
+// @route GET /api/v1/users/:id
 // @access Public
-exports.getUser = asyncHandler(async (req, res, next) => {
+exports.getUsername = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
   if (!user) {
@@ -82,5 +83,39 @@ exports.getUser = asyncHandler(async (req, res, next) => {
 
   res
     .status(200)
-    .json({ success: true, data: { name: user.name, id: user.id } });
+    .json({
+      success: true,
+      data: _.pick(user, ["role", "_id", "name", "email", "createdAt"]),
+    });
+});
+
+// @desc get list of users
+// @route GET /api/v1/users
+// @access Admin
+exports.getUsers = asyncHandler(async (req, res, next) => {
+  let response = { ...res.advancedResults };
+  response.data = response.data.map(
+    ({ role, _id, name, email, createdAt }) => ({
+      role,
+      _id,
+      name,
+      email,
+      createdAt,
+    })
+  );
+  res.status(200).json(response);
+});
+
+// @desc delete a user
+// @route DELETE /api/v1/users/:id
+// @access Admin
+exports.deleteUser = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(new ErrorResponse(`No user with id of ${req.params.id}`));
+  }
+
+  user.remove();
+  res.status(200).json({ success: true, data: [] });
 });

@@ -40,7 +40,6 @@ const cookieExtractor = function (req) {
   if (req && req.session.token) {
     token = req.session.token;
   }
-  console.log(token);
   return token;
 };
 

@@ -16,6 +16,7 @@ import { Alert } from "react-bootstrap";
 import ContactPage from "./contact/ContactPage";
 import RegisterPage from "./auth/RegisterPage";
 import requireAuth from "./requireAuth";
+import ReadPost from "./ReadPost";
 
 class App extends React.Component {
   renderAlert() {
@@ -44,6 +45,7 @@ class App extends React.Component {
               <Route path="/" exact component={LandingPage} />
               <Route path="/blog" exact component={BlogPage} />
               <Route path="/projects" exact component={ProjectPage} />
+              <Route path="/posts/:id" exact component={ReadPost} />
               <Route path="/contact" exact component={ContactPage} />
               <Route path="/register" exact component={RegisterPage} />
               <Route path="/admin" component={requireAuth(AdminPage)} />

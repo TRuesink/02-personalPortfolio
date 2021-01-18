@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import userReducer from "../../reducers/userReducer";
 
 import PostItem from "../PostItem";
 
@@ -12,7 +13,11 @@ class RecentProjects extends React.Component {
       return (
         <PostItem
           post={post}
-          userName={this.props.users[post.user]}
+          userName={
+            this.props.users[post.user] === undefined
+              ? "loading"
+              : this.props.users[post.user].name
+          }
           key={post._id}
         />
       );
@@ -40,6 +45,7 @@ const mapStateToProps = (state) => {
     isFetching: state.posts.isFetching,
     errorMessage: state.posts.errorMessage,
     users: state.users.data,
+    loading: state.loading,
   };
 };
 

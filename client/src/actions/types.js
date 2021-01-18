@@ -38,9 +38,15 @@ export const DISMISS_ALERT = "DISMISS_ALERT";
 export const FETCH_USER = "FETCH_USER";
 export const IS_FETCHING_USER = "IS_FETCHING_USER";
 export const ERROR_USER = "ERROR_USER";
+export const FETCH_USERS = "FETCH_USERS";
+export const DELETE_USER = "DELETE_USER";
 
 // auth types
 export const AUTH_USER = "AUTH_USER";
 export const SIGN_OUT = "SIGN_OUT";
 export const IS_FETCHING_AUTH = "IS_FETCHING_AUTH";
 export const ERROR_AUTH = "ERROR_AUTH";
+
+// general
+export const IN_PROGRESS = "IN_PROGRESS";
+export const COMPLETE = "COMPLETE";

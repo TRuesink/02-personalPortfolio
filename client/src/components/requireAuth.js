@@ -16,7 +16,6 @@ export default (ChildComponent) => {
     }
     shouldNavigateAway() {
       const role = this.props.auth.user.role;
-      console.log(role);
       if (role !== "admin" && role !== "pending" && role !== "init") {
         history.push("/");
         this.props.showAlert({

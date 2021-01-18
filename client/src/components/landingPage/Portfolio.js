@@ -12,7 +12,7 @@ class Portfolio extends React.Component {
     const projects = this.props.posts.filter((post) => post.type === "project");
     return projects.map((project) => {
       return (
-        <Link to={`/projects/${project.id}`} key={project.id}>
+        <Link to={`/posts/${project.id}`} key={project.id}>
           <div className="card text-white image-card">
             <img
               className="card-img"

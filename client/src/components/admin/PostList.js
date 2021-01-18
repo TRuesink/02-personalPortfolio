@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import AdminPostItem from "./AdminPostItem";
 
@@ -9,7 +10,11 @@ class PostList extends React.Component {
       return (
         <AdminPostItem
           post={post}
-          userName={this.props.users[post.user]}
+          userName={
+            this.props.users[post.user] === undefined
+              ? "loading"
+              : this.props.users[post.user].name
+          }
           key={post._id}
         />
       );
@@ -18,7 +23,19 @@ class PostList extends React.Component {
   render() {
     return (
       <div>
-        <h1>POSTS</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <h1>POSTS</h1>
+          <Link to="/admin/posts/new">
+            <button className="btn btn-primary">New</button>
+          </Link>
+        </div>
+
         {this.props.isFetching || this.props.posts.length === 0 ? (
           <div className="ui active centered inline loader"></div>
         ) : (
@@ -35,6 +52,7 @@ const mapStateToProps = (state) => {
     isFetching: state.posts.isFetching,
     errorMessage: state.posts.errorMessage,
     users: state.users.data,
+    loading: state.loading,
   };
 };
 

@@ -1,11 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class FeaturedBlog extends React.Component {
   renderFeaturedProject() {
     const featured = this.props.posts.filter((post) => {
       return post.featured === true && post.type === "blog";
     });
+    if (featured.length === 0) {
+      return <div className="ui active centered inline loader"></div>;
+    }
     return (
       <div className="content">
         <img
@@ -17,7 +21,9 @@ class FeaturedBlog extends React.Component {
           <h3 className="post-title">{featured[0].title}</h3>
           <div className="post-author">
             <p style={{ marginBottom: 0 }} className="text-muted">
-              {this.props.users[featured[0].user]}
+              {this.props.users[featured[0].user] === undefined
+                ? "loading"
+                : this.props.users[featured[0].user].name}
             </p>
             <p style={{ marginBottom: 0 }} className="text-muted font-italic">
               {new Date(featured[0].createdAt).toLocaleDateString()}
@@ -26,7 +32,9 @@ class FeaturedBlog extends React.Component {
           <hr></hr>
 
           <h5 style={{ marginBottom: "1rem" }}>{featured[0].teaser}</h5>
-          <button className="btn btn-primary">Read More</button>
+          <Link to={`/posts/${featured[0]._id}`} className="btn btn-primary">
+            Read More
+          </Link>
         </div>
       </div>
     );
@@ -53,6 +61,7 @@ const mapStateToProps = (state) => {
     isFetching: state.posts.isFetching,
     errorMessage: state.posts.errorMessage,
     users: state.users.data,
+    loading: state.loading,
   };
 };
 

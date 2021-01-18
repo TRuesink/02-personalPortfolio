@@ -12,11 +12,14 @@ class MessageForm extends React.Component {
     this.props.deleteMessage(id);
   };
   renderMessages() {
-    console.log(this.props.testing);
     return this.props.messages.map((message) => {
       const cardClass = message.read ? "border-success" : "border-danger";
       return (
-        <div className={`card mb-3 ${cardClass}`} style={{ maxWidth: "100%" }}>
+        <div
+          className={`card mb-3 ${cardClass}`}
+          style={{ maxWidth: "100%" }}
+          key={message._id}
+        >
           <div
             className="card-header"
             style={{
@@ -32,7 +35,7 @@ class MessageForm extends React.Component {
                     this.onClickMessage(message._id, !message.read)
                   }
                   name={message._id}
-                  class="form-check-input position-static"
+                  className="form-check-input position-static"
                   type="checkbox"
                   id={message._id}
                   component="input"

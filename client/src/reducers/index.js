@@ -8,6 +8,7 @@ import messageReducer from "./messageReducer";
 import alertReducer from "./alertReducer";
 import userReducer from "./userReducer";
 import authReducer from "./authReducer";
+import loadingReducer from "./loadingReducer";
 
 export default combineReducers({
   skills: skillsReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   alert: alertReducer,
   users: userReducer,
   auth: authReducer,
+  loading: loadingReducer,
   form: formReducer,
 });

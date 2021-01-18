@@ -30,6 +30,14 @@ import {
   IS_FETCHING_AUTH,
   UPDATE_MESSAGE,
   DELETE_MESSAGE,
+  FETCH_USERS,
+  DELETE_USER,
+  IN_PROGRESS,
+  COMPLETE,
+  FETCH_POST,
+  UPDATE_POST,
+  CREATE_POST,
+  DELETE_POST,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -81,6 +89,61 @@ export const fetchPosts = () => {
       dispatch({ type: IS_FETCHING_POSTS });
       const posts = await axios.get("/api/v1/posts");
       dispatch({ type: FETCH_POSTS, payload: posts.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_POSTS, payload: error.response.data.error });
+    }
+  };
+};
+
+// get single Post
+export const fetchPost = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_POSTS });
+      const post = await axios.get(`/api/v1/posts/${id}`);
+      dispatch({ type: FETCH_POST, payload: post.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_POSTS, payload: error.response.data.error });
+    }
+  };
+};
+
+// update Post
+export const updatePost = (id, formValues) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_POSTS });
+      const post = await axios.put(`/api/v1/posts/${id}`, formValues);
+      dispatch({ type: UPDATE_POST, payload: post.data.data });
+      history.push("/admin/posts");
+    } catch (error) {
+      dispatch({ type: ERROR_POSTS, payload: error.response.data.error });
+    }
+  };
+};
+
+// create Post
+export const createPost = (formValues) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_POSTS });
+      const post = await axios.post(`/api/v1/posts`, formValues);
+      dispatch({ type: CREATE_POST, payload: post.data.data });
+      history.push("/admin/posts");
+    } catch (error) {
+      dispatch({ type: ERROR_POSTS, payload: error.response.data.error });
+    }
+  };
+};
+
+// delete Post
+export const deletePost = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_POSTS });
+      await axios.delete(`/api/v1/posts/${id}`);
+      dispatch({ type: DELETE_POST, payload: id });
+      history.push("/admin/posts");
     } catch (error) {
       dispatch({ type: ERROR_POSTS, payload: error.response.data.error });
     }
@@ -150,8 +213,34 @@ export const fetchUser = (id) => {
   return async (dispatch) => {
     try {
       dispatch({ type: IS_FETCHING_USER });
-      const user = await axios.get(`/api/v1/user/${id}`);
+      const user = await axios.get(`/api/v1/users/${id}`);
       dispatch({ type: FETCH_USER, payload: user.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_USER, payload: error.response.data.error });
+    }
+  };
+};
+
+// get a user name
+export const fetchUsers = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_USER });
+      const users = await axios.get(`/api/v1/users`);
+      dispatch({ type: FETCH_USERS, payload: users.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_USER, payload: error.response.data.error });
+    }
+  };
+};
+
+// delete user
+export const deleteUser = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_USER });
+      await axios.delete(`/api/v1/users/${id}`);
+      dispatch({ type: DELETE_USER, payload: id });
     } catch (error) {
       dispatch({ type: ERROR_USER, payload: error.response.data.error });
     }
@@ -165,6 +254,15 @@ export const fetchPostsAndUsers = () => {
 
     const userIds = _.uniq(_.map(getState().posts.data, "user"));
     userIds.forEach((id) => dispatch(fetchUser(id)));
+  };
+};
+
+// get single Post and single user
+export const fetchPostAndUser = (id) => {
+  return async (dispatch, getState) => {
+    await dispatch(fetchPost(id));
+    const userId = getState().posts.data[id].user;
+    await dispatch(fetchUser(userId));
   };
 };
 

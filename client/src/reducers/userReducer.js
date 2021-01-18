@@ -1,5 +1,11 @@
-//import _ from "lodash";
-import { FETCH_USER, IS_FETCHING_USER, ERROR_USER } from "../actions/types";
+import _ from "lodash";
+import {
+  FETCH_USER,
+  IS_FETCHING_USER,
+  ERROR_USER,
+  FETCH_USERS,
+  DELETE_USER,
+} from "../actions/types";
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -9,10 +15,22 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case FETCH_USERS:
+      return {
+        isFetching: false,
+        data: { ...state.data, ..._.mapKeys(action.payload, "_id") },
+        errorMessage: "",
+      };
+    case DELETE_USER:
+      return {
+        isFetching: false,
+        data: _.omit(state.data, action.payload),
+        errorMessage: "",
+      };
     case FETCH_USER:
       return {
         isFetching: false,
-        data: { ...state.data, [action.payload.id]: action.payload.name },
+        data: { ...state.data, [action.payload._id]: action.payload },
         errorMessage: "",
       };
     case IS_FETCHING_USER:

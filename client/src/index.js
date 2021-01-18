@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
 import "./custom.scss";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import reducers from "./reducers";
 import App from "./components/App";

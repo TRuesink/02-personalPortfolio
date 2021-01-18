@@ -16,7 +16,9 @@ class AdminNav extends React.Component {
           className="list-group-item list-group-item-action"
         >
           Posts
-          <span class="badge badge-dark badge-pill">{this.props.numPosts}</span>
+          <span className="badge badge-dark badge-pill">
+            {this.props.numPosts}
+          </span>
         </NavLink>
         <NavLink
           style={{
@@ -28,7 +30,9 @@ class AdminNav extends React.Component {
           className="list-group-item list-group-item-action"
         >
           Users
-          <span class="badge badge-dark badge-pill">14</span>
+          <span className="badge badge-dark badge-pill">
+            {this.props.numUsers}
+          </span>
         </NavLink>
         <NavLink
           style={{
@@ -40,7 +44,7 @@ class AdminNav extends React.Component {
           className="list-group-item list-group-item-action"
         >
           Messages
-          <span class="badge badge-dark badge-pill">
+          <span className="badge badge-dark badge-pill">
             {this.props.numMessages}
           </span>
         </NavLink>
@@ -53,6 +57,7 @@ const mapStateToProps = (state) => {
   return {
     numPosts: Object.values(state.posts.data).length,
     numMessages: Object.values(state.messages.data).length,
+    numUsers: Object.values(state.users.data).length,
   };
 };
 

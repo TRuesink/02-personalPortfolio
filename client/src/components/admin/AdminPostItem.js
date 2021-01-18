@@ -39,7 +39,7 @@ const PostItem = ({ post, userName }) => {
               }}
             >
               <p style={{ marginBottom: 0 }} className="text-muted">
-                {userName}
+                {userName === undefined ? "loading" : userName}
               </p>
               <p style={{ marginBottom: 0 }} className="text-muted font-italic">
                 {new Date(post.createdAt).toLocaleDateString()}
