@@ -42,6 +42,10 @@ app.use(
     name: "timruesinkSession",
     keys: [keys.cookieKey],
     maxAge: 4 * 60 * 60 * 1000, // 4 hours for this cookie
+    cookie: {
+      secure: true,
+      domain: "timruesink.com",
+    },
   })
 );
 //sanitize data
