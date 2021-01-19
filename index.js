@@ -53,8 +53,8 @@ app.use(mongoSanitize());
 // set security headers
 app.use(helmet());
 
-// // prevent cross site scripting attacks
-// app.use(xss());
+// prevent cross site scripting attacks
+app.use(xss());
 
 // prevent http param polution
 app.use(hpp());
