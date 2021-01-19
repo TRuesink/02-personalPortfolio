@@ -67,7 +67,7 @@ const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 mins
   max: 100,
 });
-app.use(limiter);
+// app.use(limiter);
 
 // Cross origin resource sharing
 app.use(cors());
@@ -77,10 +77,10 @@ app.use("/api/v1/photos", express.static(dir));
 
 // mount routers
 app.use("/api/v1/", authRouter);
-app.use("/api/v1/posts", postRouter);
-app.use("/api/v1/comments", commentRouter);
-app.use("/api/v1/tags", tagRouter);
-app.use("/api/v1/resume", resumeRouter);
+app.use("/api/v1/posts", postRouter, limiter);
+app.use("/api/v1/comments", commentRouter, limiter);
+app.use("/api/v1/tags", tagRouter, limiter);
+app.use("/api/v1/resume", resumeRouter, limiter);
 app.use("/api/v1/messages", messageRouter);
 
 // custom error handler
