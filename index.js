@@ -10,8 +10,8 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const rateLimit = require("express-rate-limit");
 const cors = require("cors");
-// const dotenv = require("dotenv");
-// dotenv.config({ path: "./config/config.env" });
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
 
 // mongoDB connector
 const connectDB = require("./utils/connectDB");
