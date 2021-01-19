@@ -54,7 +54,7 @@ export default class ControlledEditor extends Component {
         <Editor
           editorState={editorState}
           wrapperClassName="wrapper-class"
-          editorClassName="form-control"
+          editorClassName="form-control custom-editor"
           onEditorStateChange={this.onEditorStateChange}
           toolbar={{
             inline: { inDropdown: true },

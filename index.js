@@ -10,8 +10,11 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const rateLimit = require("express-rate-limit");
 const cors = require("cors");
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config/config.env" });
+
+if (process.env.NODE_ENV !== "production") {
+  const dotenv = require("dotenv");
+  dotenv.config({ path: "./config/config.env" });
+}
 
 // mongoDB connector
 const connectDB = require("./utils/connectDB");
@@ -51,10 +54,10 @@ app.use(
 app.use(mongoSanitize());
 
 // set security headers
-app.use(helmet());
+// app.use(helmet());
 
 // prevent cross site scripting attacks
-app.use(xss());
+// app.use(xss());
 
 // prevent http param polution
 app.use(hpp());
