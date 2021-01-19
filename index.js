@@ -10,8 +10,8 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const rateLimit = require("express-rate-limit");
 const cors = require("cors");
-// const dotenv = require("dotenv");
-// dotenv.config({ path: "./config/config.env" });
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
 
 // mongoDB connector
 const connectDB = require("./utils/connectDB");
@@ -84,7 +84,10 @@ app.use("/api/v1/messages", messageRouter);
 app.use(errorLogger);
 app.use(errorHandler);
 
-if (process.env.NODE_ENV === "production") {
+if (
+  process.env.NODE_ENV === "production" ||
+  process.env.NODE_ENV === "test_production"
+) {
   // Express will serve production assets like our main.js file or main.css file
   app.use(express.static("client/build"));
   // Express will serve the index.html file if it doesn't recognize route
