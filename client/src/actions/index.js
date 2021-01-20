@@ -42,6 +42,9 @@ import {
   UPLOAD_PHOTO,
   ERROR_PHOTO,
   SELECT_PHOTO,
+  IS_FETCHING_COMMENTS,
+  FETCH_COMMENTS,
+  ERROR_COMMENTS,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -365,4 +368,18 @@ export const showAlert = (message) => {
 // dismess alert
 export const dismissAlert = () => {
   return { type: DISMISS_ALERT };
+};
+
+// --------------------- COMMENT RESOURCES ---------------------- //
+// get list of Comment for Post
+export const fetchComments = (postId) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_COMMENTS });
+      const comments = await axios.get(`/api/v1/posts/${postId}/comments`);
+      dispatch({ type: FETCH_COMMENTS, payload: comments.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_COMMENTS, payload: error.response.data.error });
+    }
+  };
 };

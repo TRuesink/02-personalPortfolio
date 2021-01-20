@@ -56,3 +56,10 @@ export const ERROR_AUTH = "ERROR_AUTH";
 // general
 export const IN_PROGRESS = "IN_PROGRESS";
 export const COMPLETE = "COMPLETE";
+
+// comments
+export const FETCH_COMMENTS = "FETCH_COMMENTS";
+export const IS_FETCHING_COMMENTS = "IS_FETCHING_COMMENTS";
+export const ERROR_COMMENTS = "ERROR_COMMENTS";
+export const CREATE_COMMENT = "CREATE_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";

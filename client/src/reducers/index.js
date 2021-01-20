@@ -10,6 +10,7 @@ import userReducer from "./userReducer";
 import authReducer from "./authReducer";
 import loadingReducer from "./loadingReducer";
 import photoReducer from "./photoReducer";
+import commentReducer from "./commentReducer";
 
 export default combineReducers({
   skills: skillsReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
   auth: authReducer,
   loading: loadingReducer,
   photo: photoReducer,
+  comments: commentReducer,
   form: formReducer,
 });

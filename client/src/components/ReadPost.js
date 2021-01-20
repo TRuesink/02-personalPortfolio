@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchPostAndUser } from "../actions";
+import CommentForm from "./comments/CommentForm";
+import CommentList from "./comments/CommentList";
 
 class ReadPost extends React.Component {
   componentDidMount() {
@@ -33,6 +35,12 @@ class ReadPost extends React.Component {
             __html: post.content,
           }}
         ></div>
+        <div className="post-detail-comments">
+          <hr></hr>
+          <h1>Comments</h1>
+          <CommentForm postId={this.props.match.params.id} />
+          <CommentList comments={post.comments} />
+        </div>
       </div>
     );
   }
