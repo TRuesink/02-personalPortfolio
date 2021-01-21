@@ -1,5 +1,4 @@
 import React from "react";
-import MessageItem from "./MessageItem";
 import MessageForm from "./MessageForm";
 import { connect } from "react-redux";
 

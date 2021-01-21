@@ -22,7 +22,10 @@ router.use("/:postId/tags", tagRouter);
 router
   .route("/")
   .post(protect, permissions("admin"), createPost)
-  .get(advancedResults(Post, "user", "comments"), getPosts);
+  .get(
+    advancedResults(Post, { path: "user", select: "name" }, "comments"),
+    getPosts
+  );
 
 router
   .route("/:id")

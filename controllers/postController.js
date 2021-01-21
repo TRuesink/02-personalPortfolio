@@ -13,7 +13,9 @@ exports.createPost = asyncHandler(async (req, res, next) => {
   //create a new post
   let newPost = await Post.create(req.body);
 
-  newPost = await newPost.populate(["user", "comments"]).execPopulate();
+  newPost = await newPost
+    .populate([{ path: "user", select: "name" }, "comments"])
+    .execPopulate();
 
   res.status(201).json({
     success: true,
@@ -33,7 +35,7 @@ exports.getPosts = asyncHandler(async (req, res, next) => {
 // @access Public
 exports.getPost = asyncHandler(async (req, res, next) => {
   const post = await Post.findById(req.params.id).populate([
-    "user",
+    { path: "user", select: "name" },
     "comments",
   ]);
   if (!post) {

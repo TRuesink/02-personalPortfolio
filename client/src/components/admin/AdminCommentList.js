@@ -7,6 +7,7 @@ class AdminCommentList extends React.Component {
     return this.props.posts.map((post, index) => {
       return (
         <Link
+          key={post._id}
           style={{
             display: "flex",
             justifyContent: "space-between",

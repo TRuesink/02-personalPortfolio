@@ -12,7 +12,7 @@ class ReadPost extends React.Component {
   }
 
   renderPostContent() {
-    const { post, users } = this.props;
+    const { post } = this.props;
     return (
       <div className="post-detail-container">
         <div className="post-detail-title">
@@ -28,6 +28,7 @@ class ReadPost extends React.Component {
         <img
           src={`/api/v1/photos/uploads/${post.photo}`}
           className="post-detail-image"
+          alt="post"
         ></img>
         <div
           className="post-detail-section"
