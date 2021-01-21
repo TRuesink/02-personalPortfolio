@@ -32,7 +32,10 @@ exports.getPosts = asyncHandler(async (req, res, next) => {
 // @route GET /api/v1/posts/:id
 // @access Public
 exports.getPost = asyncHandler(async (req, res, next) => {
-  const post = await Post.findById(req.params.id).populate(["user"]);
+  const post = await Post.findById(req.params.id).populate([
+    "user",
+    "comments",
+  ]);
   if (!post) {
     return next(
       new ErrorResponse(`Post not found with id of ${req.params.id}`, 404)
