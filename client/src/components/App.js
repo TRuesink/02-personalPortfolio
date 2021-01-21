@@ -17,6 +17,7 @@ import ContactPage from "./contact/ContactPage";
 import RegisterPage from "./auth/RegisterPage";
 import requireAuth from "./requireAuth";
 import ReadPost from "./ReadPost";
+import ScrollToTop from "./ScrollToTop";
 
 class App extends React.Component {
   renderAlert() {
@@ -39,6 +40,7 @@ class App extends React.Component {
       <div className="body-bg">
         <div className="custom-alert">{this.renderAlert()}</div>
         <Router history={history}>
+          <ScrollToTop />
           <Header />
           <div>
             <Switch>
