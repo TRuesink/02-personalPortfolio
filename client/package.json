@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "dompurify": "^2.2.6",
     "draft-js-import-html": "^1.4.1",
     "draftjs-to-html": "^0.9.1",
     "html-to-draft": "^0.1.6",

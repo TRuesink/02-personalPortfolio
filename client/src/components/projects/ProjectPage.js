@@ -1,7 +1,7 @@
 import React from "react";
 import { Element } from "react-scroll";
 import { connect } from "react-redux";
-import { fetchPostsAndUsers } from "../../actions";
+import { fetchPosts } from "../../actions";
 
 import Sidebar from "../Sidebar";
 import ProjectBanner from "./ProjectBanner";
@@ -18,7 +18,7 @@ const sections = [
 
 class ProjectPage extends React.Component {
   componentDidMount() {
-    this.props.fetchPostsAndUsers();
+    this.props.fetchPosts();
     window.scrollTo(0, 0);
   }
   render() {
@@ -42,4 +42,4 @@ class ProjectPage extends React.Component {
   }
 }
 
-export default connect(null, { fetchPostsAndUsers })(ProjectPage);
+export default connect(null, { fetchPosts })(ProjectPage);

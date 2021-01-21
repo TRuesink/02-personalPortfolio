@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PostItem = ({ post, userName }) => {
+const PostItem = ({ post }) => {
   return (
     <div className="card mb-3" style={{ maxWidth: "100%" }} key={post._id}>
       <div className="row no-gutters">
@@ -39,7 +39,7 @@ const PostItem = ({ post, userName }) => {
               }}
             >
               <p style={{ marginBottom: 0 }} className="text-muted">
-                {userName === undefined ? "loading" : userName}
+                {post.user.name}
               </p>
               <p style={{ marginBottom: 0 }} className="text-muted font-italic">
                 {new Date(post.createdAt).toLocaleDateString()}

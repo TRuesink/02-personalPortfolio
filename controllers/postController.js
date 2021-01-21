@@ -11,7 +11,9 @@ exports.createPost = asyncHandler(async (req, res, next) => {
   req.body.user = req.user.id; // add the user id to the request body
 
   //create a new post
-  const newPost = await Post.create(req.body);
+  let newPost = await Post.create(req.body);
+
+  newPost = await newPost.populate(["user", "comments"]).execPopulate();
 
   res.status(201).json({
     success: true,
@@ -30,10 +32,7 @@ exports.getPosts = asyncHandler(async (req, res, next) => {
 // @route GET /api/v1/posts/:id
 // @access Public
 exports.getPost = asyncHandler(async (req, res, next) => {
-  const post = await Post.findById(req.params.id).populate([
-    "comments",
-    "tags",
-  ]);
+  const post = await Post.findById(req.params.id).populate(["user"]);
   if (!post) {
     return next(
       new ErrorResponse(`Post not found with id of ${req.params.id}`, 404)

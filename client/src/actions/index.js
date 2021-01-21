@@ -45,6 +45,8 @@ import {
   IS_FETCHING_COMMENTS,
   FETCH_COMMENTS,
   ERROR_COMMENTS,
+  CREATE_COMMENT,
+  DELETE_COMMENT,
 } from "./types";
 
 // --------------------- RESUME RESOURCES ---------------------- //
@@ -378,6 +380,46 @@ export const fetchComments = (postId) => {
       dispatch({ type: IS_FETCHING_COMMENTS });
       const comments = await axios.get(`/api/v1/posts/${postId}/comments`);
       dispatch({ type: FETCH_COMMENTS, payload: comments.data.data });
+    } catch (error) {
+      dispatch({ type: ERROR_COMMENTS, payload: error.response.data.error });
+    }
+  };
+};
+
+// fetch comments and users
+export const fetchCommentsAndUsers = (postId) => {
+  return async (dispatch, getState) => {
+    await dispatch(fetchComments(postId));
+
+    const userIds = _.uniq(_.map(getState().comments.data, "user"));
+    userIds.forEach((user) => dispatch(fetchUser(user._id)));
+  };
+};
+
+// create comment for post
+export const createComment = (postId, formValues) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_COMMENTS });
+      const comment = await axios.post(
+        `/api/v1/posts/${postId}/comments`,
+        formValues
+      );
+      dispatch({ type: CREATE_COMMENT, payload: comment.data.data });
+      dispatch(reset("commentForm"));
+    } catch (error) {
+      dispatch({ type: ERROR_COMMENTS, payload: error.response.data.error });
+    }
+  };
+};
+
+// delete comment for post
+export const deleteComment = (postId) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: IS_FETCHING_COMMENTS });
+      await axios.delete(`/api/v1/comments/${postId}`);
+      dispatch({ type: DELETE_COMMENT, payload: postId });
     } catch (error) {
       dispatch({ type: ERROR_COMMENTS, payload: error.response.data.error });
     }

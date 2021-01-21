@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import userReducer from "../../reducers/userReducer";
 
 import PostItem from "../PostItem";
 
@@ -10,17 +9,7 @@ class RecentProjects extends React.Component {
       return post.featured === false && post.type === "project";
     });
     return recent.map((post) => {
-      return (
-        <PostItem
-          post={post}
-          userName={
-            this.props.users[post.user] === undefined
-              ? "loading"
-              : this.props.users[post.user].name
-          }
-          key={post._id}
-        />
-      );
+      return <PostItem post={post} key={post._id} />;
     });
   }
   render() {
@@ -44,8 +33,6 @@ const mapStateToProps = (state) => {
     posts: Object.values(state.posts.data),
     isFetching: state.posts.isFetching,
     errorMessage: state.posts.errorMessage,
-    users: state.users.data,
-    loading: state.loading,
   };
 };
 

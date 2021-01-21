@@ -4,17 +4,19 @@ import { Route, Switch } from "react-router-dom";
 import PostList from "./PostList";
 
 import { connect } from "react-redux";
-import { fetchMessages, fetchPostsAndUsers, fetchUsers } from "../../actions";
+import { fetchMessages, fetchPosts, fetchUsers } from "../../actions";
 import MessageList from "./MessageList";
 import UserList from "./UserList";
 import PostDetail from "./PostDetail";
 import PostCreate from "./PostCreate";
+import AdminCommentList from "./AdminCommentList";
+import PostCommentList from "./PostCommentList";
 
 class AdminPage extends React.Component {
   componentDidMount() {
     this.props.fetchMessages();
     this.props.fetchUsers();
-    this.props.fetchPostsAndUsers();
+    this.props.fetchPosts();
   }
   render() {
     return (
@@ -39,6 +41,16 @@ class AdminPage extends React.Component {
               <Route path="/admin/messages" exact>
                 <MessageList />
               </Route>
+              <Route
+                path="/admin/comments"
+                exact
+                component={AdminCommentList}
+              />
+              <Route
+                path="/admin/comments/:id"
+                exact
+                component={PostCommentList}
+              />
             </Switch>
           </div>
         </div>
@@ -56,6 +68,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   fetchMessages,
-  fetchPostsAndUsers,
+  fetchPosts,
   fetchUsers,
 })(AdminPage);

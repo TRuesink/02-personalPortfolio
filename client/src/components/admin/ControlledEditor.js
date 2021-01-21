@@ -36,7 +36,6 @@ export default class ControlledEditor extends Component {
     const newValue = unemojify(
       draftToHtml(convertToRaw(editorState.getCurrentContent()))
     );
-    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
 
     if (value !== newValue) {
       onChange(newValue);

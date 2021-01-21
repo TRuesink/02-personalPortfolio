@@ -7,17 +7,7 @@ import AdminPostItem from "./AdminPostItem";
 class PostList extends React.Component {
   renderPosts() {
     return this.props.posts.map((post) => {
-      return (
-        <AdminPostItem
-          post={post}
-          userName={
-            this.props.users[post.user] === undefined
-              ? "loading"
-              : this.props.users[post.user].name
-          }
-          key={post._id}
-        />
-      );
+      return <AdminPostItem post={post} key={post._id} />;
     });
   }
   render() {
@@ -51,7 +41,6 @@ const mapStateToProps = (state) => {
     posts: Object.values(state.posts.data),
     isFetching: state.posts.isFetching,
     errorMessage: state.posts.errorMessage,
-    users: state.users.data,
     loading: state.loading,
   };
 };

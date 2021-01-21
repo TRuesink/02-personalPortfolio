@@ -21,9 +21,7 @@ class FeaturedProjects extends React.Component {
           <h3 className="post-title">{featured[0].title}</h3>
           <div className="post-author">
             <p style={{ marginBottom: 0 }} className="text-muted">
-              {this.props.users[featured[0].user] === undefined
-                ? "loading"
-                : this.props.users[featured[0].user].name}
+              {featured[0].user.name}
             </p>
             <p style={{ marginBottom: 0 }} className="text-muted font-italic">
               {new Date(featured[0].createdAt).toLocaleDateString()}
@@ -60,8 +58,6 @@ const mapStateToProps = (state) => {
     posts: Object.values(state.posts.data),
     isFetching: state.posts.isFetching,
     errorMessage: state.posts.errorMessage,
-    users: state.users.data,
-    loading: state.loading,
   };
 };
 

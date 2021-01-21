@@ -24,7 +24,7 @@ const commentReducer = (state = INITIAL_STATE, action) => {
     case CREATE_COMMENT:
       return {
         isFetching: false,
-        data: { ...state.data, [action.payload.id]: action.payload },
+        data: { ...state.data, [action.payload._id]: action.payload },
         errorMessage: "",
       };
     case IS_FETCHING_COMMENTS:

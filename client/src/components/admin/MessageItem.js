@@ -2,9 +2,6 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 
 class MessageItem extends React.Component {
-  onSubmit = (formValues) => {
-    console.log(formValues);
-  };
   render() {
     const { message } = this.props;
     return (

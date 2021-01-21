@@ -49,6 +49,8 @@ const advancedResults = (model, ...populate) => async (req, res, next) => {
     query = query.populate(populate);
   }
 
+  //query = query.populate({ path: "user", select: "name" });
+
   // executing query
   const results = await query;
 

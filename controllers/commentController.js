@@ -23,7 +23,15 @@ exports.createComment = asyncHandler(async (req, res, next) => {
   }
 
   //create a new comment
-  const newComment = await Comment.create(req.body);
+  let newComment = await Comment.create(req.body);
+
+  newComment = await newComment
+    .populate({
+      path: "post",
+      select: "title",
+    })
+    .populate({ path: "user", select: "name" })
+    .execPopulate();
 
   res.status(201).json({
     success: true,
