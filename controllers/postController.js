@@ -71,7 +71,7 @@ exports.updatePost = asyncHandler(async (req, res, next) => {
   post = await Post.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
-  });
+  }).populate([{ path: "user", select: "name" }, "comments"]);
 
   res.status(200).json({ success: true, data: post });
 });

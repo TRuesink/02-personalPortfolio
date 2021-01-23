@@ -35,6 +35,13 @@ const postSchema = new Schema(
   }
 );
 
+// Cascade delete courses when a bootcamp is deleted
+postSchema.pre("remove", async function (next) {
+  console.log(`comments being removed from post ${this._id}`);
+  await this.model("Comment").deleteMany({ post: this._id });
+  next();
+});
+
 // reverse populate with comments
 postSchema.virtual("comments", {
   ref: "Comment",
