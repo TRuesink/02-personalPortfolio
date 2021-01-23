@@ -15,6 +15,11 @@
     "category": "Software Engineering"
   },
   {
+    "name": "git Version Control",
+    "level": 5,
+    "category": "Software Engineering"
+  },
+  {
     "name": "nodeJS / Express",
     "level": 5,
     "category": "Software Engineering"
@@ -30,12 +35,12 @@
     "category": "Software Engineering"
   },
   {
-    "name": "Heroku Deployment",
+    "name": "Heroku",
     "level": 5,
     "category": "Software Engineering"
   },
   {
-    "name": "Linode Deployment",
+    "name": "Linode",
     "level": 5,
     "category": "Software Engineering"
   },
@@ -50,7 +55,7 @@
     "category": "Software Engineering"
   },
   {
-    "name": "salesforce Point-And-Click Development",
+    "name": "Salesforce Point-And-Click Development",
     "level": 5,
     "category": "Software Engineering"
   },

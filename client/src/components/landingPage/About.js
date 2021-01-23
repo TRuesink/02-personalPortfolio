@@ -9,12 +9,12 @@ class About extends React.Component {
         <div className="resume-section">
           <h1 className="title">ABOUT</h1>
           <p style={{ textAlign: "center" }}>
-            Hi! Nice to meet you. My name is Tim Ruesink, and I am an engineer.
-            I identify as such because I like to solve interesting problems. In
-            undergrad, it was surgical biomechanics. In grad school, it was
-            cardiovascular heart disease. Professionally, it's been problems of
-            a business nature... One thing they all have in common --- I look
-            first to software and technology as a solution.
+            Hi! My name is Tim Ruesink, I'm an engineer and I like to solve
+            interesting problems. In undergrad, it was surgical biomechanics. In
+            grad school, it was cardiovascular heart disease. Professionally,
+            it's been problems of a business nature... I can peel back the
+            hypothetical layers of a complex problem, break it down into smaller
+            problems, and find elegant solutions.
           </p>
           <div className="content">
             <img
@@ -25,9 +25,10 @@ class About extends React.Component {
             <div className="description">
               <h3>Software / Sales / Mechanical Engineer</h3>
               <p className="text-muted">
-                First, I wanted to build things. Then, I wanted to build elegant
-                things. Finally, I wanted to build elegant things that solved
-                real problems.
+                I am a self-taught software developer with academic and
+                professional experience in mechanical and sales engineering. All
+                my experience has one thing in common - I see solutions in code.
+                As Einstein so eloquently said:
               </p>
               <blockquote className="blockquote">
                 <p className="mb-0" style={{ color: "#02729e" }}>
@@ -38,11 +39,12 @@ class About extends React.Component {
                 <footer className="blockquote-footer">Albert Einstein</footer>
               </blockquote>
               <p className="text-muted">
-                So where has my experience in software, mechanical and sales
-                engineering left me? First, I can understand and analyze diverse
-                problems from techincal and business perspectives. Second, I
-                have the techincal and management skills to orchestrate elegant
-                solutions.
+                I've spent a lot of time thinking about a wide variety of
+                problems, from nonoptimal sales funnels to caridovascular
+                defects in infants. More often than not, I find that problems
+                originate at a software level. I couldn't help but dive
+                head-first into coding. After all, the only effective solutions
+                are those that address the real problem.
               </p>
             </div>
           </div>
