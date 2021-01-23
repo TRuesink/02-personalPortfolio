@@ -16,11 +16,11 @@ class ContactBanner extends React.Component {
             <b>CONTACT</b>
           </h1>
           <h5>
-            text
+            Send me a text.
             <br />
-            text
+            Give me a call.
             <br />
-            text
+            Shoot me an email.
           </h5>
         </div>
       </div>

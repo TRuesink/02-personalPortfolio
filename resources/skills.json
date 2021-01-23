@@ -30,32 +30,57 @@
     "category": "Software Engineering"
   },
   {
-    "name": "jsForce / salesforce REST API",
+    "name": "Heroku Deployment",
     "level": 5,
     "category": "Software Engineering"
   },
   {
-    "name": "salesforce point-and-click development",
+    "name": "Linode Deployment",
     "level": 5,
     "category": "Software Engineering"
   },
   {
-    "name": "negotiation",
+    "name": "Full Stack Web Development",
+    "level": 5,
+    "category": "Software Engineering"
+  },
+  {
+    "name": "jsForce / Salesforce REST API",
+    "level": 5,
+    "category": "Software Engineering"
+  },
+  {
+    "name": "salesforce Point-And-Click Development",
+    "level": 5,
+    "category": "Software Engineering"
+  },
+  {
+    "name": "Business Development",
     "level": 5,
     "category": "Sales"
   },
   {
-    "name": "project management",
+    "name": "Budget / Timeline Management",
     "level": 5,
     "category": "Sales"
   },
   {
-    "name": "marketing",
+    "name": "Project Management",
     "level": 5,
     "category": "Sales"
   },
   {
-    "name": "solid works",
+    "name": "Public Speaking",
+    "level": 5,
+    "category": "Sales"
+  },
+  {
+    "name": "Marketing",
+    "level": 5,
+    "category": "Sales"
+  },
+  {
+    "name": "SolidWorks",
     "level": 5,
     "category": "Mechanical Engineering"
   },
@@ -65,7 +90,32 @@
     "category": "Mechanical Engineering"
   },
   {
-    "name": "Problem Solving",
+    "name": "Cardiovascular Fluid Dynamics",
+    "level": 5,
+    "category": "Mechanical Engineering"
+  },
+  {
+    "name": "4D Flow MRI",
+    "level": 5,
+    "category": "Mechanical Engineering"
+  },
+  {
+    "name": "Computational Fluid Dynamics (CFD)",
+    "level": 5,
+    "category": "Mechanical Engineering"
+  },
+  {
+    "name": "Circuit Board Design",
+    "level": 5,
+    "category": "Mechanical Engineering"
+  },
+  {
+    "name": "Academic / Technical Writing",
+    "level": 5,
+    "category": "Mechanical Engineering"
+  },
+  {
+    "name": "in-vitro / in-vivo Experiment Design",
     "level": 5,
     "category": "Mechanical Engineering"
   }

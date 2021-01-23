@@ -7,7 +7,6 @@ import FileUpload from "./FileUpload";
 
 class PostDetail extends React.Component {
   componentDidMount() {
-    console.log("test fetch post");
     this.props.fetchPost(this.props.match.params.id);
   }
 

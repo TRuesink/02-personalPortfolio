@@ -14,7 +14,7 @@ class Header extends React.Component {
     if (this.props.auth.isSignedIn) {
       return (
         <>
-          <Navbar.Text style={{ marginRight: "2rem" }}>
+          <Navbar.Text style={{ marginRight: "2rem", padding: "0.5rem 1rem" }}>
             Hi {this.props.auth.user.name}
           </Navbar.Text>
 

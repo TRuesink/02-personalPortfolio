@@ -12,11 +12,11 @@ class BlogBanner extends React.Component {
             <b>BLOG</b>
           </h1>
           <h5>
-            text
+            Sometimes reality is too complex.
             <br />
-            text
+            Stories give it form.
             <br />
-            text
+            <span className="text-muted">- Jean Luc Godard</span>
           </h5>
         </div>
       </div>

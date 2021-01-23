@@ -16,10 +16,11 @@ class Banner extends React.Component {
             <b>PROJECTS</b>
           </h1>
           <h5>
-            by Training.
+            You don't learn to walk by following rules.
             <br />
+            You learn by doing and falling over.
             <br />
-            by Passion.
+            <span className="text-muted">- Richard Branson</span>
           </h5>
         </div>
       </div>

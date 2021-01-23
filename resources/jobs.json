@@ -5,7 +5,7 @@
     "photo": "wiLogo.jpg",
     "title": "Graduate Research Assistant",
     "company": "UW Cardiovascular Fluid Dynamics Laboratory",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
+    "description": "Designed and executed research projects in the field of cardiovascular fluid dynamics, culminating in a first-author publication on the application of 4D flow MRI and in-vitro experiments for analysis of cardiovascular heart disease.",
     "city": "Madison",
     "state": "WI"
   },
@@ -15,7 +15,7 @@
     "photo": "piLogo.jpg",
     "title": "Sales Engineer",
     "company": "Plastic Ingenuity",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
+    "description": "Manage high value opportunities and accounts in the custom packaging industry. This includes delivering proposals to target customers, planning and executing marketing campaigns, managing client and internal timelines / resources.",
     "city": "Madison",
     "state": "WI"
   },
@@ -25,7 +25,7 @@
     "endDate": "Aug 2016",
     "title": "Design Engineering Intern",
     "company": "General Motors",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
+    "description": "Developed process to measure dynamic clearance between automotive seat components, resulting  in an improved, and user-adopted, seat design process.",
     "city": "Warren",
     "state": "MI"
   },
@@ -35,7 +35,7 @@
     "endDate": "May 2017",
     "title": "Student Success Center Senior Staff",
     "company": "Western Michigan University",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
+    "description": "Developed operations / training program for undergraduate tutoring process --- Mentored undergraduate students undergoing academic difficulty --- Created lesson plans for academic recovery course.",
     "city": "Kalamazoo",
     "state": "MI"
   },
@@ -45,7 +45,7 @@
     "endDate": "Jan 2015",
     "title": "Engineering Intern",
     "company": "Humphrey Products",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id mi convallis, vel viverra dui maximus.",
+    "description": "Designed and built fixtures and manifolds for valve testing --- Developed hardware and software (LabVIEW) for automated testing of standard products.",
     "city": "Kalamazoo",
     "state": "MI"
   }

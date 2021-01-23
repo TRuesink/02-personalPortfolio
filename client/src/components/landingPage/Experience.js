@@ -30,6 +30,7 @@ class Experience extends React.Component {
       .map((job) => {
         const startDate = new Date(job.startDate);
         const endDate = new Date(job.endDate);
+
         return (
           <div className="custom-card" key={job._id}>
             <img
@@ -43,7 +44,9 @@ class Experience extends React.Component {
               </div>
               <p className="font-italic">
                 {`${months[startDate.getMonth()]} ${startDate.getFullYear()}`} -{" "}
-                {`${months[endDate.getMonth()]} ${endDate.getFullYear()}`}
+                {endDate > new Date()
+                  ? "Present"
+                  : `${months[endDate.getMonth()]} ${endDate.getFullYear()}`}
               </p>
               <p>{job.description}</p>
             </div>

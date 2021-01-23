@@ -9,12 +9,12 @@ class About extends React.Component {
         <div className="resume-section">
           <h1 className="title">ABOUT</h1>
           <p style={{ textAlign: "center" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi
-            eros, dignissim non felis in, tincidunt auctor lorem. Sed vitae
-            varius nulla, at mattis lorem. Etiam vestibulum dolor id mi
-            convallis, vel viverra dui maximus. Morbi in efficitur quam, sit
-            amet venenatis turpis. Mauris bibendum aliquam mollis. Donec non
-            felis sed felis dictum ultrices.
+            Hi! Nice to meet you. My name is Tim Ruesink, and I am an engineer.
+            I identify as such because I like to solve interesting problems. In
+            undergrad, it was surgical biomechanics. In grad school, it was
+            cardiovascular heart disease. Professionally, it's been problems of
+            a business nature... One thing they all have in common --- I look
+            first to software and technology as a solution.
           </p>
           <div className="content">
             <img
@@ -25,8 +25,9 @@ class About extends React.Component {
             <div className="description">
               <h3>Software / Sales / Mechanical Engineer</h3>
               <p className="text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                mi eros, dignissim non felis in, tincidunt auctor lorem.
+                First, I wanted to build things. Then, I wanted to build elegant
+                things. Finally, I wanted to build elegant things that solved
+                real problems.
               </p>
               <blockquote className="blockquote">
                 <p className="mb-0" style={{ color: "#02729e" }}>
@@ -37,12 +38,11 @@ class About extends React.Component {
                 <footer className="blockquote-footer">Albert Einstein</footer>
               </blockquote>
               <p className="text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                mi eros, dignissim non felis in, tincidunt auctor lorem. Sed
-                vitae varius nulla, at mattis lorem. Etiam vestibulum dolor id
-                mi convallis, vel viverra dui maximus. Morbi in efficitur quam,
-                sit amet venenatis turpis. Mauris bibendum aliquam mollis. Donec
-                non felis sed felis dictum ultrices.
+                So where has my experience in software, mechanical and sales
+                engineering left me? First, I can understand and analyze diverse
+                problems from techincal and business perspectives. Second, I
+                have the techincal and management skills to orchestrate elegant
+                solutions.
               </p>
             </div>
           </div>
