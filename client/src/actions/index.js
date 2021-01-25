@@ -166,7 +166,6 @@ export const createMessage = (formValues) => {
       const message = await axios.post("/api/v1/messages", formValues);
       dispatch({ type: CREATE_MESSAGE, payload: message.data });
       dispatch(reset("contactForm"));
-      history.push("/#");
     } catch (error) {
       dispatch({ type: ERROR_MESSAGES, payload: error.response.data.error });
     }
@@ -301,7 +300,6 @@ export const logInUser = (formValues, callback) => {
       dispatch({ type: AUTH_USER, payload: response.data.data });
       callback();
       dispatch(reset("signInForm"));
-      history.push("/");
     } catch (error) {
       dispatch({ type: ERROR_AUTH, payload: error.response.data.error });
       callback();

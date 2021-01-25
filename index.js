@@ -65,7 +65,7 @@ app.use(hpp());
 // Rate limit
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 mins
-  max: 100,
+  max: 200,
 });
 // app.use(limiter);
 

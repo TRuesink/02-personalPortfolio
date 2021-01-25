@@ -56,7 +56,6 @@ class ContactForm extends React.Component {
       type: "success",
       content: "Thanks for contacting me!",
     });
-    window.scrollTo(0, 0);
   };
 
   render() {

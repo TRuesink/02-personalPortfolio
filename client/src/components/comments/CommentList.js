@@ -33,9 +33,9 @@ class CommentList extends React.Component {
   render() {
     return (
       <div>
-        {this.props.isFetching || this.props.comments.length === 0 ? (
+        {this.props.isFetching ? (
           <div className="ui active centered inline loader"></div>
-        ) : (
+        ) : this.props.comments.length === 0 ? null : (
           <div className="comment-list">{this.renderCommentList()}</div>
         )}
       </div>
