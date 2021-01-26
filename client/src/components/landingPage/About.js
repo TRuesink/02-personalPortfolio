@@ -12,9 +12,9 @@ class About extends React.Component {
             Hi! My name is Tim Ruesink, I'm an engineer and I like to solve
             interesting problems. In undergrad, it was surgical biomechanics. In
             grad school, it was cardiovascular heart disease. Professionally,
-            it's been problems of a business nature... I can peel back the
-            hypothetical layers of a complex problem, break it down into smaller
-            problems, and find elegant solutions.
+            it's been problems of a business nature... I peel back the layers of
+            a complex problem, break it down into smaller problems, and find
+            elegant solutions.
           </p>
           <div className="content">
             <img
@@ -40,11 +40,11 @@ class About extends React.Component {
               </blockquote>
               <p className="text-muted">
                 I've spent a lot of time thinking about a wide variety of
-                problems, from nonoptimal sales funnels to caridovascular
+                problems, from nonoptimal sales funnels to cardiovascular
                 defects in infants. More often than not, I find that problems
                 originate at a software level. I couldn't help but dive
                 head-first into coding. After all, the only effective solutions
-                are those that address the real problem.
+                are those that address real problems.
               </p>
             </div>
           </div>
