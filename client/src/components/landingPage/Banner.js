@@ -45,7 +45,7 @@ class Banner extends React.Component {
               smooth={true}
               duration={500}
             >
-              Sotware Developer
+              Software Developer
             </ScrollLink>{" "}
             by Passion.
           </h5>

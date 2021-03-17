@@ -5,7 +5,7 @@
     "photo": "wiLogo.jpg",
     "title": "Graduate Research Assistant",
     "company": "UW Cardiovascular Fluid Dynamics Laboratory",
-    "description": "Designed and executed research projects in the field of cardiovascular fluid dynamics, culminating in a first-author publication on the application of 4D flow MRI and in-vitro experiments for analysis of cardiovascular heart disease.",
+    "description": "Designed and executed research projects in the field of cardiovascular fluid dynamics, culminating in a first-author publication on the application of 4D flow MRI for analysis of cardiovascular heart disease using pulse wave velocity measurements.",
     "city": "Madison",
     "state": "WI"
   },
@@ -25,7 +25,7 @@
     "endDate": "Aug 2016",
     "title": "Design Engineering Intern",
     "company": "General Motors",
-    "description": "Developed process to measure dynamic clearance between automotive seat components, resulting  in an improved, and user-adopted, seat design process.",
+    "description": "Developed process to measure dynamic clearance between automotive seat components, resulting in improved, and user-adopted, seat design analysis.",
     "city": "Warren",
     "state": "MI"
   },
